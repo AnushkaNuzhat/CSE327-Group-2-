@@ -7,6 +7,7 @@ from base import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user_control.urls')),
+    path('blood-donation/', include('blood_donation.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
