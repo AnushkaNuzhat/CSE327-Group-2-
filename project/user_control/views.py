@@ -16,11 +16,25 @@ from user_control.utils import calculate_age
 
 @unauthenticated_user  # this decorator will ensure that the user is logged in before they can access this view
 def home_view(request):  # The home page
+    """
+    This view will render the home page.
+    :param request:
+    :return: renders the home page
+    """
     return render(request, 'index.html')
 
 
 @unauthenticated_user  # this decorator will ensure that the user is logged in before they can access this view
 def login_view(request):  # Log a user in
+    """
+    This view will render the login page.
+    :param request:
+
+    This view renders a login form and then takes in an email and a password.
+    if the email and password is authentic then logs in the user otherwise shows an error.
+
+    :return: renders the login page
+    """
     if request.POST:  # If the form has been submitted...
         form = LoginForm(request.POST)  # A form bound to the POST data
         if form.is_valid():  # All validation rules pass
@@ -53,12 +67,29 @@ def login_view(request):  # Log a user in
 
 
 def logout_view(request):  # Log a user out
+    """
+    This view will log a user out.
+    :param request:
+
+    This view logs out an user and redirects to the home page.
+
+    :return: redirects to the home page
+    """
     logout(request)  # Log the user out
     return redirect('home')  # Redirect to the home page
 
 
-@unauthenticated_user
+@unauthenticated_user # this decorator will ensure that the user is logged in before they can access this view
 def doctor_signup_view(request):  # The doctor signup page
+    """
+    This view will render the doctor signup page.
+    :param request: The HTTP request
+
+    This view renders a doctor signup form and then takes in an email and a password.
+    if the email and password is authentic then logs in the user otherwise shows an error.
+
+    :return: renders the doctor signup page
+    """
     if request.method == "POST":  # If the form has been submitted...
         doctor_form = DoctorRegistrationForm(request.POST)  # A form bound to the POST data
         if doctor_form.is_valid():  # All validation rules pass
@@ -87,6 +118,15 @@ def doctor_signup_view(request):  # The doctor signup page
 
 @unauthenticated_user
 def patient_signup_view(request):  # The patient signup page
+    """
+    This view will render the patient signup page.
+    :param request:
+
+    This view renders a patient signup form and then takes in an email and a password.
+    if the email and password is authentic then logs in the user otherwise shows an error.
+
+    :return: renders the patient signup page
+    """
     if request.method == "POST":  # If the form has been submitted...
         patient_form = PatientRegistrationForm(request.POST)  # A form bound to the POST data
         if patient_form.is_valid():  # All validation rules pass
@@ -118,6 +158,11 @@ def patient_signup_view(request):  # The patient signup page
 @show_to_doctor(allowed_roles=[
     'is_doctor'])  # This decorator will ensure that the user is a doctor before they can access this view
 def doctor_dashboard(request):  # The doctor dashboard
+    """
+    This view will render the doctor dashboard.
+    :param request:
+    :return: renders the doctor dashboard
+    """
     user = request.user  # Get the user
     profile = DoctorModel.objects.get(user=user)  # Get the doctor's profile
 
@@ -132,6 +177,11 @@ def doctor_dashboard(request):  # The doctor dashboard
 @show_to_patient(allowed_roles=[
     'is_patient'])  # This decorator will ensure that the user is a patient before they can access this view
 def patient_dashboard(request):  # The patient dashboard
+    """
+    This view will render the patient dashboard.
+    :param request:
+    :return: renders the patient dashboard    
+    """
     user = request.user  # Get the user
     profile = PatientModel.objects.get(user=user)  # Get the patient's profile
 
@@ -144,6 +194,15 @@ def patient_dashboard(request):  # The patient dashboard
 
 @login_required(login_url='login')
 def doctor_profile_view(request, pk):  # The doctor's profile page
+    """
+    This view will render the doctor's profile page.
+    :param request:
+    :param pk: the primary key of the doctor
+
+    This view will render the doctor's profile page, along with the informations like the name, email, phone number, posted articles, appointements, etc.
+
+    :return: renders the doctor's profile page
+    """
     is_self = False  # The user is not the doctor
     user = UserModel.objects.get(id=pk)  # Get the user
 
@@ -186,6 +245,15 @@ def doctor_profile_view(request, pk):  # The doctor's profile page
 
 @login_required(login_url='login')
 def patient_profile_view(request, pk):  # The patient's profile page
+    """
+    This view will render the patient's profile page.
+    :param request:
+    :param pk: the primary key of the patient
+
+    This view will render the patient's profile page, along with the informations like the name, email, phone number, community posts, completed appointements, blood requests, plasma requests, etc.
+
+    :return: renders the patient's profile page    
+    """
     is_self = False  # The user is not the patient
 
     user = UserModel.objects.get(id=pk)  # Get the user
@@ -235,14 +303,23 @@ def patient_profile_view(request, pk):  # The patient's profile page
 
 @login_required(login_url='login')
 def doctor_edit_profile(request):  # The doctor's profile edit page
-    profile = DoctorModel.objects.get(user=request.user)  # Get the doctor's profile
+    """
+    This view will render the doctor's profile edit page.
+    :param request:
+
+    This view will render a form to edit the doctor's profile.
+
+    :return: renders the doctor's profile edit page
+    """
+    user = request.user
+    profile = DoctorModel.objects.get(user=user)  # Get the doctor's profile
 
     form = DoctorEditProfileForm(instance=profile)  # A form bound to the doctor's profile
     if request.method == 'POST':  # If the form has been submitted...
         form = DoctorEditProfileForm(request.POST, request.FILES, instance=profile)  # A form bound to the POST data
         if form.is_valid():  # All validation rules pass
             form.save()  # Save the form
-            return redirect('doctor-profile', request.user.id)  # Redirect to the doctor's profile
+            return redirect('doctor-profile', user.id)  # Redirect to the doctor's profile
         else:  # The form is invalid
             return redirect('edit-profile')  # Redirect to the edit profile page
 
@@ -255,14 +332,23 @@ def doctor_edit_profile(request):  # The doctor's profile edit page
 
 @login_required(login_url='login')
 def patient_edit_profile(request):  # The patient's profile edit page
-    profile = PatientModel.objects.get(user=request.user)  # Get the patient's profile
+    """
+    This view will render the patient's profile edit page.
+    :param request:
+
+    This view will render a form to edit the patient's profile.
+
+    :return: renders the patient's profile edit page
+    """
+    user = request.user
+    profile = PatientModel.objects.get(user=user)  # Get the patient's profile
 
     form = PatientEditProfileForm(instance=profile)  # A form bound to the patient's profile
     if request.method == 'POST':  # If the form has been submitted...
         form = PatientEditProfileForm(request.POST, request.FILES, instance=profile)  # A form bound to the POST data
         if form.is_valid():  # All validation rules pass
             form.save()  # Save the form
-            return redirect('patient-profile', request.user.id)  # Redirect to the patient's profile
+            return redirect('patient-profile', user.id)  # Redirect to the patient's profile
         else:  # The form is invalid
             return redirect('edit-profile')  # Redirect to the edit profile page
 
@@ -273,11 +359,17 @@ def patient_edit_profile(request):  # The patient's profile edit page
     return render(request, 'pages/user-control/edit-profile.html', context)  # Render the view
 
 
-def about_view(request):  # The about page
-    return render(request, "pages/utils/about-us.html")  # Render the view
-
-
 def contact_view(request):  # The contact page
+    """
+    This view will render the contact page.
+    :param request:
+
+    This view will render a form to contact the admin panel.
+    The feedback will be saved in the database.
+
+    :return: renders the contact page
+    """
+    
     if request.method == 'POST':  # If the form has been submitted...
         name = request.POST['name']  # Get the name
         email_add = request.POST['email']  # Get the email
@@ -295,6 +387,16 @@ def contact_view(request):  # The contact page
 
 @login_required(login_url='login')
 def account_settings_view(request):  # The account settings page
+    """
+    This view will render the account settings page.
+    :param request:
+
+    This view will render a form to change the account settings.
+    User can change his/her name, email, and password from this page.
+
+    :return: renders the account settings page
+    """
+    
     user = request.user  # Get the user
 
     information_form = AccountInformationForm(instance=user)  # A form bound to the user's account information
