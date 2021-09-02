@@ -6,6 +6,9 @@ from django.db import models
 
 # User manager for the User Model
 class MyUserManager(BaseUserManager):
+    """
+    This is a custom manager for the Custom User model.
+    """
     def create_user(self, email, name, password=None):
         """
         Creates and saves a User with the given email and password.
@@ -42,6 +45,17 @@ class MyUserManager(BaseUserManager):
 
 # User Model (Common for all the users)
 class UserModel(AbstractBaseUser):
+    """
+    This is the Custom User model.
+    This is the model that will be used to create the users in the system.
+    This model includes the following fields:
+    email: The email address of the user.
+    name: The name of the user.
+    is_active: A boolean field that specifies whether the user is active or not.
+    is_staff: A boolean field that specifies whether the user is a staff member or not.
+    is_admin: A boolean field that specifies whether the user is an admin or not.
+    date_joined: A date field that specifies when the user joined the system.
+    """
     email = models.EmailField(max_length=255, unique=True)  # Email
     name = models.CharField(max_length=255)  # Name
     is_patient = models.BooleanField(default=False)  # True if patient
@@ -68,6 +82,20 @@ class UserModel(AbstractBaseUser):
 
 # Patient Model (Only for Patients / Patients' Profile)
 class PatientModel(models.Model):
+    """
+    This is the model that will be used to create the patient's profile.
+    This model includes the following fields:
+    user: A one-to-one field that references the User model.
+    image: A file field that stores the patient's image.
+    gender: The gender of the patient.
+    blood_group: The blood group of the patient
+    height: The height of the patient in inches.
+    weight: The weight of the patient in pounds.
+    date_of_birth: The date of birth of the patient.
+    phone: The phone number of the patient.
+    address: The address of the patient.
+    last_donation: The date of the last blood donation of the patient.
+    """
     GENDER_CHOICES = [
         ('Male', 'Male'),
         ('Female', 'Female'),
@@ -123,6 +151,23 @@ class SpecializationModel(models.Model):
 
 # Doctor Model (only for Doctors / Doctors' Profile)
 class DoctorModel(models.Model):
+    """
+    This is the model that will be used to create the doctor's profile.
+    This model includes the following fields:
+    user: A one-to-one field that references the User model.
+    bio: A text field that stores the doctor's bio.
+    image: A file field that stores the patient's image.
+    gender: The gender of the patient.
+    blood_group: The blood group of the patient
+    date_of_birth: The date of birth of the patient.
+    phone: The phone number of the patient.
+    nid: The national id card number of the doctor.
+    specialization: The specialization of the doctor.
+    bmdc_reg_no: The BMDC registration number of the doctor.
+    last_donation: The date of the last blood donation of the doctor.
+
+    """
+
     GENDER_CHOICES = [
         ('Male', 'Male'),
         ('Female', 'Female'),
@@ -155,6 +200,14 @@ class DoctorModel(models.Model):
 
 # Responses from Contact Us form will be saved here
 class FeedbackModel(models.Model):
+    """
+    This is the model that will be used to store the feedback data.
+    This model includes the following fields:
+    name: The name of the user.
+    email: The email of the user.
+    subject: The subject of the feedback.
+    message: The message of the feedback.
+    """
     name = models.CharField(max_length=255)  # name of the user
     email = models.CharField(max_length=255)  # email of the user
     subject = models.CharField(max_length=255)  # subject of the message
