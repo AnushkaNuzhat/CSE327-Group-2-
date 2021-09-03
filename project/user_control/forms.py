@@ -6,6 +6,11 @@ from .models import *
 
 
 class LoginForm(forms.Form):  # LoginForm
+    """
+    This form is used to login a user.
+
+    This form displays an email, and a password field.
+    """
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))  # email
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))  # password
 
@@ -22,6 +27,11 @@ class LoginForm(forms.Form):  # LoginForm
 
 
 class DoctorRegistrationForm(UserCreationForm):
+    """
+    This form is used to register a doctor.
+
+    This form displays an email, a name, a password, and a confirm password field.
+    """
     email = forms.EmailField(max_length=255, help_text='Required. Add a valid email address',
                              widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))
     name = forms.CharField(max_length=60, widget=forms.TextInput(attrs={'placeholder': 'Full Name'}))
@@ -43,6 +53,11 @@ class DoctorRegistrationForm(UserCreationForm):
 
 
 class PatientRegistrationForm(UserCreationForm):
+    """
+    This form is used to register a patient.
+
+    This form displays an email, a name, a password, and a confirm password field.
+    """
     email = forms.EmailField(max_length=255, help_text='Required. Add a valid email address',
                              widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))
     name = forms.CharField(max_length=60, widget=forms.TextInput(attrs={'placeholder': 'Full Name'}))
@@ -64,6 +79,20 @@ class PatientRegistrationForm(UserCreationForm):
 
 
 class DoctorEditProfileForm(ModelForm):
+    """
+    This form is used to edit a doctor's profile.
+
+    This form displays
+     - specialization: a dropdown list of all the specializations
+     - profile_pic: a file input for the doctor's profile picture
+     - bio: a textarea for the doctor's bio
+     - blood_group: a drop down for doctor's blood group
+     - date_of_birth: a date input for the doctor's date of birth
+     - nid: a text input for the doctor's NID
+     - bmdc_reg_no: a text input for the doctor's BMDC registration number
+     - gender: a drop down for doctor's gender
+     - last_donation: a date input for the doctor's last donation
+    """
     image = forms.ImageField(
         required=False,
         error_messages={'invalid': "Image files only"},
@@ -79,6 +108,18 @@ class DoctorEditProfileForm(ModelForm):
 
 
 class PatientEditProfileForm(ModelForm):
+    """
+    This form is used to edit a patient's profile.
+
+    This form displays
+     - profile_pic: a file input for the patient's profile picture
+     - date_of_birth: a date input for the patient's date of birth
+     - height: a text input for the patient's height
+     - weight: a text input for the patient's weight
+     - blood_group: a drop down for patient's blood group
+     - gender: a drop down for patient's gender
+     - last_donation: a date input for the patient's last donation
+    """
     image = forms.ImageField(
         required=False,
         error_messages={'invalid': "Image files only"},
@@ -94,6 +135,13 @@ class PatientEditProfileForm(ModelForm):
 
 
 class AccountInformationForm(ModelForm):  # AccountInformationForm
+    """
+    This form is used to edit a user's account information.
+
+    This form displays
+     - email: a text input for the user's email
+     - name: a text input for the user's name
+    """
     name = forms.CharField(max_length=60, widget=forms.TextInput(attrs={'placeholder': 'Full Name'}))  # name
     email = forms.EmailField(max_length=255, help_text='Required. Add a valid email address',
                              widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))  # email
