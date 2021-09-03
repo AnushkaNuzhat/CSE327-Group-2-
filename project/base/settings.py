@@ -21,6 +21,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'user_control',
+    'appointments',
     'articles',
     'blood_donation',
 
