@@ -205,9 +205,9 @@ def appointment_delete_view(request, pk):  # delete appointment view
     """
     appointment = AppointmentModel.objects.get(id=pk)  # get current appointment from id
 
-    if request.method == 'POST':
-        appointment.delete()
-        return redirect('patient-appointment-home')
+    if request.method == 'POST': # If the form has been submitted...
+        appointment.delete() # Delete the appointment
+        return redirect('patient-appointment-home') # Redirect to appointment home page
 
     context = {  # create context to pass to frontend
         'appointment': appointment,
@@ -215,8 +215,8 @@ def appointment_delete_view(request, pk):  # delete appointment view
     return render(request, 'pages/appointment/delete-appointment.html', context)  # render the page
 
 
-@login_required(login_url='login')
-@show_to_doctor(allowed_roles=['is_doctor'])
+@login_required(login_url='login') # redirects to login if user is not logged in
+@show_to_doctor(allowed_roles=['is_doctor']) # accessible to doctors only
 def appointment_reject_view(request, pk):
     """
     This view is for a doctor to reject an appointment.
@@ -230,10 +230,10 @@ def appointment_reject_view(request, pk):
     """
     appointment = AppointmentModel.objects.get(id=pk)  # get current appointment from id
 
-    if request.method == 'POST':
-        appointment.is_canceled = True
-        appointment.save()
-        return redirect('appointment-details', appointment.id)
+    if request.method == 'POST': # If the form has been submitted...
+        appointment.is_canceled = True # Set the appointment to canceled
+        appointment.save() # Save the appointment
+        return redirect('appointment-details', appointment.id) # Redirect to appointment details page
 
     context = {  # create context to pass to frontend
         'appointment': appointment,
@@ -254,29 +254,29 @@ def appointment_detail_view(request, pk):  # view details of an appointment
     Users can view the detaiuls of his/her appointment from this page.
     This page will show the details of the appointment, including the patient, the doctor, the date and time, and the appointment status.
     """
-    appointment = AppointmentModel.objects.get(id=pk)
-    is_pending = False
-    if appointment.is_accepted == False and appointment.is_canceled == False and appointment.is_complete == False:
-        is_pending = True
+    appointment = AppointmentModel.objects.get(id=pk) # get current appointment from id
+    is_pending = False # set is_pending to false
+    if appointment.is_accepted == False and appointment.is_canceled == False and appointment.is_complete == False: # if the appointment is not accepted, canceled, or complete
+        is_pending = True # set is_pending to true
 
-    is_upcoming = False
-    if appointment.is_accepted == True and appointment.is_canceled == False and appointment.is_complete == False:
-        is_upcoming = True
+    is_upcoming = False # set is_upcoming to false
+    if appointment.is_accepted == True and appointment.is_canceled == False and appointment.is_complete == False: # if the appointment is accepted but not complete
+        is_upcoming = True # set is_upcoming to true
 
-    is_complete = False
-    prescription = None
-    if appointment.is_complete:
-        is_complete = True
-        prescription = PrescriptionModel.objects.get(appointment=appointment)
+    is_complete = False # set is_complete to false
+    prescription = None # set prescription to none
+    if appointment.is_complete: # if the appointment is complete
+        is_complete = True # set is_complete to true
+        prescription = PrescriptionModel.objects.get(appointment=appointment) # get prescription from appointment
 
-    context = {
+    context = { # create context to pass to frontend
         'appointment': appointment,
         'is_pending': is_pending,
         'is_complete': is_complete,
         'is_upcoming': is_upcoming,
         'prescription': prescription,
     }
-    return render(request, 'pages/appointment/appointment-details.html', context)
+    return render(request, 'pages/appointment/appointment-details.html', context) # render the page
 
 
 @login_required(login_url='login')  # redirects to login if user is not logged in
@@ -292,25 +292,25 @@ def write_prescription_view(request, pk):
     This view is only accessible to logged in users who are doctors.
     Doctors will be able to write a prescription from this page.
     """
-    appointment = AppointmentModel.objects.get(id=pk)
+    appointment = AppointmentModel.objects.get(id=pk) # get current appointment from id
 
-    form = PrescriptionForm()
-    if request.method == 'POST':
-        form = PrescriptionForm(request.POST)
-        if form.is_valid():
-            prescription = form.save(commit=False)
-            prescription.appointment = appointment
-            prescription.save()
+    form = PrescriptionForm() # create a new form
+    if request.method == 'POST': # If the form has been submitted...
+        form = PrescriptionForm(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            prescription = form.save(commit=False) # create a new prescription
+            prescription.appointment = appointment # add appointment to prescription
+            prescription.save() # save prescription
 
-            appointment.is_complete = True
-            appointment.save()
-            return redirect('appointment-details', appointment.id)
-        else:
-            context = {
+            appointment.is_complete = True # set appointment to complete
+            appointment.save() # save appointment
+            return redirect('appointment-details', appointment.id) # redirect to appointment details page
+        else: # the form is not valid
+            context = { # create context to pass to frontend
                 'appointment': appointment,
                 'form': form,
             }
-            return render(request, 'pages/appointment/appointment-details.html', context)
+            return render(request, 'pages/appointment/appointment-details.html', context) # render the page
 
     context = {
         'appointment': appointment,
@@ -341,7 +341,7 @@ def pdf_view(request, pk):
     if patient.date_of_birth:  # if patient has a date of birth
         age = calculate_age(patient.date_of_birth)  # calculate age
 
-    context = {
+    context = { # create context to pass to frontend
         'age': age,
         'appointment': appointment,
         'prescription': prescription,
@@ -361,12 +361,12 @@ def appointment_doctor_list_view(request):
 
     Patients can see a list of all the doctors available to them and can select one to see the details of a specific doctor, and request an appointment with them.
     """
-    specializations = SpecializationModel.objects.all()
-    doctors = DoctorModel.objects.all()
-    doctors = [doctor for doctor in doctors if doctor.specialization is not None]
+    specializations = SpecializationModel.objects.all() # get all specializations
+    doctors = DoctorModel.objects.all() # get all doctors
+    doctors = [doctor for doctor in doctors if doctor.specialization is not None] # get all doctors that have a specialization
 
-    context = {
+    context = { # create context to pass to frontend
         'specializations': specializations,
         'doctors': doctors
     }
-    return render(request, 'pages/appointment/doctors-list.html', context)
+    return render(request, 'pages/appointment/doctors-list.html', context) # render the page
