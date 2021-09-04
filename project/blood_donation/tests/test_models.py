@@ -7,15 +7,14 @@ from user_control.models import UserModel
 class AdviceModelTest(TestCase):
 
     def setUp(self):
-        self.user = UserModel.objects.create(
-            email='test4@example.com', name='name', password='asdf123ASDF', is_doctor=True)
-        BloodRequestModel.objects.create(user=self.user, patient_name='test_name', gender='test_gender',
-                                         blood_group='A+', quantity=2, location='Dhaka', is_emergency=True,
-                                         is_active=True, needed_within='2021-09-01', phone='017xxxxxxxx',
-                                         note='test_note')
+        self.user = UserModel.objects.create_user(
+            email='test@example.com', name='name', password='asdf123ASDF')
 
     def test_content(self):
-        post = BloodRequestModel.objects.get(id=1)
+        post = BloodRequestModel.objects.create(user=self.user, patient_name='test_name', gender='test_gender',
+                                                blood_group='A+', quantity=2, location='Dhaka', is_emergency=True,
+                                                is_active=True, needed_within='2021-09-01', phone='017xxxxxxxx',
+                                                note='test_note')
         expected_object_user = f'{post.user}'
         expected_object_patient_name = f'{post.patient_name}'
         expected_object_gender = f'{post.gender}'
@@ -38,3 +37,6 @@ class AdviceModelTest(TestCase):
         self.assertEquals(expected_object_needed_within, '2021-09-01')
         self.assertEquals(expected_object_phone, '017xxxxxxxx')
         self.assertEquals(expected_object_note, 'test_note')
+
+    def tearDown(self):
+        self.user.delete()
