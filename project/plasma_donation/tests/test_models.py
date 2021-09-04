@@ -1,20 +1,20 @@
 from unittest import TestCase
 
-from blood_donation.models import BloodRequestModel
+from plasma_donation.views import *
 from user_control.models import UserModel
 
 
-class AdviceModelTest(TestCase):
+class PlasmaRequestModelTest(TestCase):
 
     def setUp(self):
         self.user = UserModel.objects.create_user(
-            email='test@example.com', name='name', password='asdf123ASDF')
+            email='test@example.com', name='name', password='secret')
 
     def test_content(self):
-        post = BloodRequestModel.objects.create(user=self.user, patient_name='test_name', gender='test_gender',
-                                                blood_group='A+', quantity=2, location='Dhaka', is_emergency=True,
-                                                is_active=True, needed_within='2021-09-01', phone='017xxxxxxxx',
-                                                note='test_note')
+        post = PlasmaRequestModel.objects.create(user=self.user, patient_name='test_name', gender='test_gender',
+                                                 blood_group='A+', quantity=2, location='Dhaka', is_emergency=True,
+                                                 is_active=True, needed_within='2021-09-01', phone='017xxxxxxxx',
+                                                 note='test_note')
         expected_object_user = f'{post.user}'
         expected_object_patient_name = f'{post.patient_name}'
         expected_object_gender = f'{post.gender}'
