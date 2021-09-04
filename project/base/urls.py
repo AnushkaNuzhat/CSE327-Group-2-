@@ -7,6 +7,7 @@ from base import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user_control.urls')),
+    path('appointments/', include('appointments.urls')),
     path('blood-donation/', include('blood_donation.urls')),
 ]
 
