@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>plasma_donation.views &mdash; AMIC 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AMIC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AMIC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>plasma_donation.views</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for plasma_donation.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span> <span class="nn">django.core.paginator</span> <span class="kn">import</span> <span class="n">Paginator</span><span class="p">,</span> <span class="n">PageNotAnInteger</span><span class="p">,</span> <span class="n">EmptyPage</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+
+<span class="kn">from</span> <span class="nn">plasma_donation.forms</span> <span class="kn">import</span> <span class="n">PlasmaRequestForm</span>
+<span class="kn">from</span> <span class="nn">plasma_donation.models</span> <span class="kn">import</span> <span class="n">PlasmaRequestModel</span>
+<span class="kn">from</span> <span class="nn">user_control.models</span> <span class="kn">import</span> <span class="n">UserModel</span>
+
+
+<div class="viewcode-block" id="plasma_donation_home_view"><a class="viewcode-back" href="../../source/plasma_donation.html#plasma_donation.views.plasma_donation_home_view">[docs]</a><span class="k">def</span> <span class="nf">plasma_donation_home_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view is the main page for the plasma donation app.</span>
+<span class="sd">    parms: request</span>
+
+<span class="sd">    This view renders the home page for the plasma donation app along with the active plasma requests.</span>
+
+<span class="sd">    returns: render of the page</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plasma_requests</span> <span class="o">=</span> <span class="n">PlasmaRequestModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span>
+        <span class="s1">&#39;-posted_on&#39;</span><span class="p">)</span>  <span class="c1"># Get all active plasma requests order by date on descending order</span>
+
+    <span class="c1"># Show 16 plasma requests per page</span>
+    <span class="n">paginator</span> <span class="o">=</span> <span class="n">Paginator</span><span class="p">(</span><span class="n">plasma_requests</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Get the page number to display</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Get the plasma requests for the page</span>
+        <span class="n">plasma_requests</span> <span class="o">=</span> <span class="n">paginator</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">PageNotAnInteger</span><span class="p">:</span>  <span class="c1"># If page is not an integer, deliver first page.</span>
+        <span class="n">plasma_requests</span> <span class="o">=</span> <span class="n">paginator</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">EmptyPage</span><span class="p">:</span>  <span class="c1"># If page is out of range, deliver last page of results.</span>
+        <span class="n">plasma_requests</span> <span class="o">=</span> <span class="n">paginator</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">paginator</span><span class="o">.</span><span class="n">num_pages</span><span class="p">)</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context for the page</span>
+        <span class="s1">&#39;plasma_requests&#39;</span><span class="p">:</span> <span class="n">plasma_requests</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;pages/plasma-donation/plasma-donation-home.html&quot;</span><span class="p">,</span>
+                  <span class="n">context</span><span class="p">)</span>  <span class="c1"># render a page with a list of all the plasma requests</span></div>
+
+
+<div class="viewcode-block" id="post_plasma_request_view"><a class="viewcode-back" href="../../source/plasma_donation.html#plasma_donation.views.post_plasma_request_view">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">post_plasma_request_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view is the main page for the plasma donation app.</span>
+<span class="sd">    parms: request</span>
+
+<span class="sd">    This view renders a form for the user to post a request for plasma.</span>
+
+<span class="sd">    returns: render of the page    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="s2">&quot;Post New&quot;</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">PlasmaRequestForm</span><span class="p">()</span>  <span class="c1"># An empty form for POST request</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>  <span class="c1"># If the form has been submitted...</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">PlasmaRequestForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>  <span class="c1"># A form bound to the POST data</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>  <span class="c1"># All validation rules pass</span>
+            <span class="c1"># Create a new plasma request</span>
+            <span class="n">blood_request</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">commit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">blood_request</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>  <span class="c1"># Set the user</span>
+            <span class="n">blood_request</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Save the plasma request</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;plasma-donation-home&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to home page</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;task&#39;</span><span class="p">:</span> <span class="n">task</span><span class="p">,</span>
+        <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+                  <span class="s1">&#39;pages/plasma-donation/plasma-donation-create-update-request.html&#39;</span><span class="p">,</span>
+                  <span class="n">context</span><span class="p">)</span>  <span class="c1"># render a page with the form to post a request for plasma</span></div>
+
+
+<div class="viewcode-block" id="plasma_request_detail_view"><a class="viewcode-back" href="../../source/plasma_donation.html#plasma_donation.views.plasma_request_detail_view">[docs]</a><span class="k">def</span> <span class="nf">plasma_request_detail_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will show the details of a specific plasma request.</span>
+<span class="sd">    parms: request, user id</span>
+<span class="sd">    returns: render of the page</span>
+
+<span class="sd">    This view will show the details of a specific plasma request, and functionality to activate or deactivate the request.</span>
+
+<span class="sd">    It will also show a map of the address where the plasma is needed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">PlasmaRequestModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span> <span class="c1"># Get the request</span>
+
+    <span class="n">my_post</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># Flag to check if the user is the owner of the request</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span> <span class="ow">and</span> <span class="n">post</span><span class="o">.</span><span class="n">user</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">:</span> <span class="c1"># If the user is logged in and the user is the owner of the request</span>
+        <span class="n">my_post</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># Set the flag</span>
+
+    <span class="n">location_link</span> <span class="o">=</span> <span class="s2">&quot;https://maps.google.com/maps?width=100%25&amp;amp;height=450&amp;amp;hl=en&amp;amp;q=&quot;</span>
+
+    <span class="k">if</span> <span class="n">post</span><span class="o">.</span><span class="n">location</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># If the request has a location</span>
+        <span class="n">locations</span> <span class="o">=</span> <span class="n">post</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="c1"># Split the location string into a list</span>
+        <span class="n">location_link</span> <span class="o">=</span> <span class="s2">&quot;https://maps.google.com/maps?width=100%25&amp;amp;height=450&amp;amp;hl=en&amp;amp;q=&quot;</span>
+
+        <span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">locations</span><span class="p">:</span>
+            <span class="n">location_link</span> <span class="o">+=</span> <span class="n">location</span> <span class="o">+</span> <span class="s2">&quot;%20&quot;</span>
+
+        <span class="n">location_link</span> <span class="o">+=</span> <span class="s2">&quot;&amp;amp;t=&amp;amp;z=14&amp;amp;ie=UTF8&amp;amp;iwloc=B&amp;amp;output=embed&quot;</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;disable_req&#39;</span><span class="p">):</span> <span class="c1"># If the request is disabled</span>
+        <span class="n">post</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># Set the flag to false</span>
+        <span class="n">post</span><span class="o">.</span><span class="n">save</span><span class="p">()</span> <span class="c1"># Save the flag</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;plasma-donation-request-detail&#39;</span><span class="p">,</span> <span class="n">post</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="c1"># Redirect to the request detail page</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;activate_req&#39;</span><span class="p">):</span> <span class="c1"># If the request is active</span>
+        <span class="n">post</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># Set the flag to true</span>
+        <span class="n">post</span><span class="o">.</span><span class="n">save</span><span class="p">()</span> <span class="c1"># Save the flag</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;plasma-donation-request-detail&#39;</span><span class="p">,</span> <span class="n">post</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="c1"># Redirect to the request detail page</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span> <span class="c1"># Context for the page</span>
+        <span class="s1">&#39;post&#39;</span><span class="p">:</span> <span class="n">post</span><span class="p">,</span>
+        <span class="s1">&#39;my_post&#39;</span><span class="p">:</span> <span class="n">my_post</span><span class="p">,</span>
+        <span class="s1">&#39;location_link&#39;</span><span class="p">:</span> <span class="n">location_link</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+                  <span class="s1">&#39;pages/plasma-donation/plasma-donation-request-details.html&#39;</span><span class="p">,</span>
+                  <span class="n">context</span><span class="p">)</span> <span class="c1"># render a page with the request details</span></div>
+
+
+<div class="viewcode-block" id="update_plasma_request_view"><a class="viewcode-back" href="../../source/plasma_donation.html#plasma_donation.views.update_plasma_request_view">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">)</span> <span class="c1"># Only logged in users should access this</span>
+<span class="k">def</span> <span class="nf">update_plasma_request_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will show the details of a specific plasma request.</span>
+<span class="sd">    parms: request, user id</span>
+<span class="sd">    returns: render of the page</span>
+
+<span class="sd">    This view will show a form for the user to update a specific plasma request.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="s2">&quot;Update&quot;</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">PlasmaRequestModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span> <span class="c1"># Get the request</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">PlasmaRequestForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">post</span><span class="p">)</span> <span class="c1"># An empty form</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span> <span class="c1"># If the form has been submitted...</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">PlasmaRequestForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">post</span><span class="p">)</span> <span class="c1"># A form bound to the POST data</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span> <span class="c1"># All validation rules pass</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span> <span class="c1"># Save the plasma request</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;plasma-donation-request-detail&#39;</span><span class="p">,</span> <span class="n">post</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="c1"># Redirect to the detail page for the request</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># If the form is not valid</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;plasma-donation-update-request&#39;</span><span class="p">,</span> <span class="n">post</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="c1"># Redirect to the update page for the request</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span> <span class="c1"># Context for the page</span>
+        <span class="s1">&#39;task&#39;</span><span class="p">:</span> <span class="n">task</span><span class="p">,</span>
+        <span class="s1">&#39;post&#39;</span><span class="p">:</span> <span class="n">post</span><span class="p">,</span>
+        <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+                  <span class="s1">&#39;pages/plasma-donation/plasma-donation-create-update-request.html&#39;</span><span class="p">,</span>
+                  <span class="n">context</span><span class="p">)</span> <span class="c1"># render a page with the form to update a request for plasma</span></div>
+
+
+<div class="viewcode-block" id="delete_plasma_request_view"><a class="viewcode-back" href="../../source/plasma_donation.html#plasma_donation.views.delete_plasma_request_view">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">)</span> <span class="c1"># Only logged in users should access this</span>
+<span class="k">def</span> <span class="nf">delete_plasma_request_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will delete a specific plasma request.</span>
+<span class="sd">    parms: request, user id</span>
+<span class="sd">    returns: redirect to the request list page</span>
+
+<span class="sd">    This view will delete a specific plasma request.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">PlasmaRequestModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span> <span class="c1"># Get the request</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span> <span class="c1"># If the form has been submitted...</span>
+        <span class="n">post</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span> <span class="c1"># Delete the request</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;users-plasma-requests&#39;</span><span class="p">,</span> <span class="n">post</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="c1"># Redirect to the user page</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span> <span class="c1"># Context for the page</span>
+        <span class="s1">&#39;post&#39;</span><span class="p">:</span> <span class="n">post</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+                  <span class="s1">&#39;pages/plasma-donation/plasma-donation-request-delete.html&#39;</span><span class="p">,</span>
+                  <span class="n">context</span><span class="p">)</span> <span class="c1"># render a page to delete the plasma requests</span></div>
+
+
+<div class="viewcode-block" id="users_requests_view"><a class="viewcode-back" href="../../source/plasma_donation.html#plasma_donation.views.users_requests_view">[docs]</a><span class="k">def</span> <span class="nf">users_requests_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will show all the plasma requests for a user.</span>
+<span class="sd">    parms: request, user id</span>
+<span class="sd">    returns: render of the page</span>
+
+<span class="sd">    This view will show all the plasma requests for a specific user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">UserModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span> <span class="c1"># Get the user</span>
+    <span class="n">plasma_requests</span> <span class="o">=</span> <span class="n">PlasmaRequestModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span>
+        <span class="s1">&#39;-posted_on&#39;</span><span class="p">)</span>  <span class="c1"># Get all plasma requests for a user</span>
+
+    <span class="n">paginator</span> <span class="o">=</span> <span class="n">Paginator</span><span class="p">(</span><span class="n">plasma_requests</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="c1"># Show 16 requests per page</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># Get the page number to display</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">plasma_requests</span> <span class="o">=</span> <span class="n">paginator</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="c1"># Get the page</span>
+    <span class="k">except</span> <span class="n">PageNotAnInteger</span><span class="p">:</span> <span class="c1"># If page is not an integer, deliver first page.</span>
+        <span class="n">plasma_requests</span> <span class="o">=</span> <span class="n">paginator</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">EmptyPage</span><span class="p">:</span> <span class="c1"># If page is out of range, deliver last page of results</span>
+        <span class="n">plasma_requests</span> <span class="o">=</span> <span class="n">paginator</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">paginator</span><span class="o">.</span><span class="n">num_pages</span><span class="p">)</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span> <span class="c1"># Context to render the page</span>
+        <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">,</span>
+        <span class="s1">&#39;plasma_requests&#39;</span><span class="p">:</span> <span class="n">plasma_requests</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pages/plasma-donation/user-plasma-requests.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="c1"># render the page</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, KU, R, TR, AN.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

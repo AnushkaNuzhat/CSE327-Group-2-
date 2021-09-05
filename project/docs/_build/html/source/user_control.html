@@ -1,0 +1,1570 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>user_control package &mdash; AMIC 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> AMIC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">user_control package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-user_control.admin">user_control.admin module</a></li>
+<li><a class="reference internal" href="#module-user_control.apps">user_control.apps module</a></li>
+<li><a class="reference internal" href="#module-user_control.decorators">user_control.decorators module</a></li>
+<li><a class="reference internal" href="#module-user_control.forms">user_control.forms module</a></li>
+<li><a class="reference internal" href="#module-user_control.models">user_control.models module</a></li>
+<li><a class="reference internal" href="#module-user_control.urls">user_control.urls module</a></li>
+<li><a class="reference internal" href="#module-user_control.utils">user_control.utils module</a></li>
+<li><a class="reference internal" href="#module-user_control.views">user_control.views module</a></li>
+<li><a class="reference internal" href="#module-user_control">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AMIC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>user_control package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/source/user_control.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-control-package">
+<h1>user_control package<a class="headerlink" href="#user-control-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_control.migrations.html">user_control.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_control.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_control.migrations.html#module-user_control.migrations.0001_initial">user_control.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_control.migrations.html#module-user_control.migrations">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_control.tests.html">user_control.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_control.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_control.tests.html#module-user_control.tests.test_forms">user_control.tests.test_forms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_control.tests.html#module-user_control.tests.test_models">user_control.tests.test_models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_control.tests.html#module-user_control.tests.test_urls">user_control.tests.test_urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_control.tests.html#module-user_control.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-user_control.admin">
+<span id="user-control-admin-module"></span><h2>user_control.admin module<a class="headerlink" href="#module-user_control.admin" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.admin.DoctorAdmin">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.admin.</span></span><span class="sig-name descname"><span class="pre">DoctorAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/admin.html#DoctorAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.admin.DoctorAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.admin.options.ModelAdmin</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.DoctorAdmin.fieldsets">
+<span class="sig-name descname"><span class="pre">fieldsets</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.DoctorAdmin.fieldsets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.DoctorAdmin.filter_horizontal">
+<span class="sig-name descname"><span class="pre">filter_horizontal</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.DoctorAdmin.filter_horizontal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.DoctorAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('user',</span> <span class="pre">'phone')</span></em><a class="headerlink" href="#user_control.admin.DoctorAdmin.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.DoctorAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.DoctorAdmin.list_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="user_control.admin.DoctorAdmin.media">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#user_control.admin.DoctorAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.DoctorAdmin.ordering">
+<span class="sig-name descname"><span class="pre">ordering</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.DoctorAdmin.ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.DoctorAdmin.readonly_fields">
+<span class="sig-name descname"><span class="pre">readonly_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.DoctorAdmin.readonly_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.DoctorAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('user',)</span></em><a class="headerlink" href="#user_control.admin.DoctorAdmin.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.admin.PatientAdmin">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.admin.</span></span><span class="sig-name descname"><span class="pre">PatientAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/admin.html#PatientAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.admin.PatientAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.admin.options.ModelAdmin</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.PatientAdmin.fieldsets">
+<span class="sig-name descname"><span class="pre">fieldsets</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.PatientAdmin.fieldsets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.PatientAdmin.filter_horizontal">
+<span class="sig-name descname"><span class="pre">filter_horizontal</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.PatientAdmin.filter_horizontal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.PatientAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('user',</span> <span class="pre">'phone')</span></em><a class="headerlink" href="#user_control.admin.PatientAdmin.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.PatientAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.PatientAdmin.list_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="user_control.admin.PatientAdmin.media">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#user_control.admin.PatientAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.PatientAdmin.ordering">
+<span class="sig-name descname"><span class="pre">ordering</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.PatientAdmin.ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.PatientAdmin.readonly_fields">
+<span class="sig-name descname"><span class="pre">readonly_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.PatientAdmin.readonly_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.PatientAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('user',)</span></em><a class="headerlink" href="#user_control.admin.PatientAdmin.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.admin.UserModelAdmin">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.admin.</span></span><span class="sig-name descname"><span class="pre">UserModelAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/admin.html#UserModelAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.admin.UserModelAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.admin.UserAdmin</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.UserModelAdmin.fieldsets">
+<span class="sig-name descname"><span class="pre">fieldsets</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.UserModelAdmin.fieldsets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.UserModelAdmin.filter_horizontal">
+<span class="sig-name descname"><span class="pre">filter_horizontal</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#user_control.admin.UserModelAdmin.filter_horizontal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.UserModelAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('email',</span> <span class="pre">'name',</span> <span class="pre">'is_admin',</span> <span class="pre">'is_doctor',</span> <span class="pre">'is_patient',</span> <span class="pre">'last_login')</span></em><a class="headerlink" href="#user_control.admin.UserModelAdmin.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.UserModelAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('is_admin',</span> <span class="pre">'is_active',</span> <span class="pre">'is_doctor',</span> <span class="pre">'is_patient')</span></em><a class="headerlink" href="#user_control.admin.UserModelAdmin.list_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="user_control.admin.UserModelAdmin.media">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#user_control.admin.UserModelAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.UserModelAdmin.ordering">
+<span class="sig-name descname"><span class="pre">ordering</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('email',)</span></em><a class="headerlink" href="#user_control.admin.UserModelAdmin.ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.UserModelAdmin.readonly_fields">
+<span class="sig-name descname"><span class="pre">readonly_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('date_joined',</span> <span class="pre">'last_login')</span></em><a class="headerlink" href="#user_control.admin.UserModelAdmin.readonly_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.admin.UserModelAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('email',</span> <span class="pre">'name')</span></em><a class="headerlink" href="#user_control.admin.UserModelAdmin.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-user_control.apps">
+<span id="user-control-apps-module"></span><h2>user_control.apps module<a class="headerlink" href="#module-user_control.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.apps.UserControlConfig">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.apps.</span></span><span class="sig-name descname"><span class="pre">UserControlConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/apps.html#UserControlConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.apps.UserControlConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.apps.UserControlConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#user_control.apps.UserControlConfig.default_auto_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.apps.UserControlConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'user_control'</span></em><a class="headerlink" href="#user_control.apps.UserControlConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-user_control.decorators">
+<span id="user-control-decorators-module"></span><h2>user_control.decorators module<a class="headerlink" href="#module-user_control.decorators" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="user_control.decorators.show_to_doctor">
+<span class="sig-prename descclassname"><span class="pre">user_control.decorators.</span></span><span class="sig-name descname"><span class="pre">show_to_doctor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allowed_roles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/decorators.html#show_to_doctor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.decorators.show_to_doctor" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a decorator for views that checks that the user is a doctor,
+show a HttpResponse if not.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_control.decorators.show_to_patient">
+<span class="sig-prename descclassname"><span class="pre">user_control.decorators.</span></span><span class="sig-name descname"><span class="pre">show_to_patient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allowed_roles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/decorators.html#show_to_patient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.decorators.show_to_patient" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a decorator for views that checks that the user is a patient,
+show a HttpResponse if not.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_control.decorators.unauthenticated_user">
+<span class="sig-prename descclassname"><span class="pre">user_control.decorators.</span></span><span class="sig-name descname"><span class="pre">unauthenticated_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view_func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/decorators.html#unauthenticated_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.decorators.unauthenticated_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a decorator for views that checks that the user is logged in,
+redirecting to the login page if necessary.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-user_control.forms">
+<span id="user-control-forms-module"></span><h2>user_control.forms module<a class="headerlink" href="#module-user_control.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.AccountInformationForm">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.forms.</span></span><span class="sig-name descname"><span class="pre">AccountInformationForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data=None</span></em>, <em class="sig-param"><span class="pre">files=None</span></em>, <em class="sig-param"><span class="pre">auto_id='id_%s'</span></em>, <em class="sig-param"><span class="pre">prefix=None</span></em>, <em class="sig-param"><span class="pre">initial=None</span></em>, <em class="sig-param"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></em>, <em class="sig-param"><span class="pre">label_suffix=None</span></em>, <em class="sig-param"><span class="pre">empty_permitted=False</span></em>, <em class="sig-param"><span class="pre">instance=None</span></em>, <em class="sig-param"><span class="pre">use_required_attribute=None</span></em>, <em class="sig-param"><span class="pre">renderer=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/forms.html#AccountInformationForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.AccountInformationForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<p>This form is used to edit a user’s account information.</p>
+<dl class="simple">
+<dt>This form displays</dt><dd><ul class="simple">
+<li><p>email: a text input for the user’s email</p></li>
+<li><p>name: a text input for the user’s name</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.AccountInformationForm.Meta">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/user_control/forms.html#AccountInformationForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.AccountInformationForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.AccountInformationForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('name',</span> <span class="pre">'email')</span></em><a class="headerlink" href="#user_control.forms.AccountInformationForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.AccountInformationForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#user_control.forms.AccountInformationForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#user_control.models.UserModel" title="user_control.models.UserModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">user_control.models.UserModel</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.AccountInformationForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.AccountInformationForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.AccountInformationForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.AccountInformationForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="user_control.forms.AccountInformationForm.media">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#user_control.forms.AccountInformationForm.media" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.DoctorEditProfileForm">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.forms.</span></span><span class="sig-name descname"><span class="pre">DoctorEditProfileForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data=None</span></em>, <em class="sig-param"><span class="pre">files=None</span></em>, <em class="sig-param"><span class="pre">auto_id='id_%s'</span></em>, <em class="sig-param"><span class="pre">prefix=None</span></em>, <em class="sig-param"><span class="pre">initial=None</span></em>, <em class="sig-param"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></em>, <em class="sig-param"><span class="pre">label_suffix=None</span></em>, <em class="sig-param"><span class="pre">empty_permitted=False</span></em>, <em class="sig-param"><span class="pre">instance=None</span></em>, <em class="sig-param"><span class="pre">use_required_attribute=None</span></em>, <em class="sig-param"><span class="pre">renderer=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/forms.html#DoctorEditProfileForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.DoctorEditProfileForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<p>This form is used to edit a doctor’s profile.</p>
+<dl class="simple">
+<dt>This form displays</dt><dd><ul class="simple">
+<li><p>specialization: a dropdown list of all the specializations</p></li>
+<li><p>profile_pic: a file input for the doctor’s profile picture</p></li>
+<li><p>bio: a textarea for the doctor’s bio</p></li>
+<li><p>blood_group: a drop down for doctor’s blood group</p></li>
+<li><p>date_of_birth: a date input for the doctor’s date of birth</p></li>
+<li><p>nid: a text input for the doctor’s NID</p></li>
+<li><p>bmdc_reg_no: a text input for the doctor’s BMDC registration number</p></li>
+<li><p>gender: a drop down for doctor’s gender</p></li>
+<li><p>last_donation: a date input for the doctor’s last donation</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.DoctorEditProfileForm.Meta">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/user_control/forms.html#DoctorEditProfileForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.DoctorEditProfileForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.DoctorEditProfileForm.Meta.exclude">
+<span class="sig-name descname"><span class="pre">exclude</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['user']</span></em><a class="headerlink" href="#user_control.forms.DoctorEditProfileForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.DoctorEditProfileForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'__all__'</span></em><a class="headerlink" href="#user_control.forms.DoctorEditProfileForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.DoctorEditProfileForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#user_control.forms.DoctorEditProfileForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#user_control.models.DoctorModel" title="user_control.models.DoctorModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">user_control.models.DoctorModel</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.DoctorEditProfileForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'BMDC_regNo':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'NID':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'bio':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'blood_group':</span> <span class="pre">&lt;django.forms.fields.TypedChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'date_of_birth':</span> <span class="pre">&lt;django.forms.fields.DateField</span> <span class="pre">object&gt;,</span> <span class="pre">'gender':</span> <span class="pre">&lt;django.forms.fields.TypedChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.fields.ImageField</span> <span class="pre">object&gt;,</span> <span class="pre">'last_donation':</span> <span class="pre">&lt;django.forms.fields.DateField</span> <span class="pre">object&gt;,</span> <span class="pre">'phone':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'specialization':</span> <span class="pre">&lt;django.forms.models.ModelChoiceField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.DoctorEditProfileForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.DoctorEditProfileForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'date_of_birth':</span> <span class="pre">&lt;django.forms.fields.DateField</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.fields.ImageField</span> <span class="pre">object&gt;,</span> <span class="pre">'last_donation':</span> <span class="pre">&lt;django.forms.fields.DateField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.DoctorEditProfileForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="user_control.forms.DoctorEditProfileForm.media">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#user_control.forms.DoctorEditProfileForm.media" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.DoctorRegistrationForm">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.forms.</span></span><span class="sig-name descname"><span class="pre">DoctorRegistrationForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/forms.html#DoctorRegistrationForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.DoctorRegistrationForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.forms.UserCreationForm</span></code></p>
+<p>This form is used to register a doctor.</p>
+<p>This form displays an email, a name, a password, and a confirm password field.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.DoctorRegistrationForm.Meta">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/user_control/forms.html#DoctorRegistrationForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.DoctorRegistrationForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.DoctorRegistrationForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('name',</span> <span class="pre">'email',</span> <span class="pre">'password1',</span> <span class="pre">'password2',</span> <span class="pre">'check')</span></em><a class="headerlink" href="#user_control.forms.DoctorRegistrationForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.DoctorRegistrationForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#user_control.forms.DoctorRegistrationForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#user_control.models.UserModel" title="user_control.models.UserModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">user_control.models.UserModel</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.DoctorRegistrationForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'check':</span> <span class="pre">&lt;django.forms.fields.BooleanField</span> <span class="pre">object&gt;,</span> <span class="pre">'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.DoctorRegistrationForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.DoctorRegistrationForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'check':</span> <span class="pre">&lt;django.forms.fields.BooleanField</span> <span class="pre">object&gt;,</span> <span class="pre">'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.DoctorRegistrationForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="user_control.forms.DoctorRegistrationForm.media">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#user_control.forms.DoctorRegistrationForm.media" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.LoginForm">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.forms.</span></span><span class="sig-name descname"><span class="pre">LoginForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data=None</span></em>, <em class="sig-param"><span class="pre">files=None</span></em>, <em class="sig-param"><span class="pre">auto_id='id_%s'</span></em>, <em class="sig-param"><span class="pre">prefix=None</span></em>, <em class="sig-param"><span class="pre">initial=None</span></em>, <em class="sig-param"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></em>, <em class="sig-param"><span class="pre">label_suffix=None</span></em>, <em class="sig-param"><span class="pre">empty_permitted=False</span></em>, <em class="sig-param"><span class="pre">field_order=None</span></em>, <em class="sig-param"><span class="pre">use_required_attribute=None</span></em>, <em class="sig-param"><span class="pre">renderer=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/forms.html#LoginForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.LoginForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.forms.Form</span></code></p>
+<p>This form is used to login a user.</p>
+<p>This form displays an email, and a password field.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.LoginForm.Meta">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/user_control/forms.html#LoginForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.LoginForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.LoginForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('email',</span> <span class="pre">'password')</span></em><a class="headerlink" href="#user_control.forms.LoginForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.LoginForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#user_control.forms.LoginForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#user_control.models.UserModel" title="user_control.models.UserModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">user_control.models.UserModel</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.LoginForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'password':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.LoginForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.forms.LoginForm.clean">
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/forms.html#LoginForm.clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.LoginForm.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook for doing any extra form-wide cleaning after Field.clean() has been
+called on every field. Any ValidationError raised by this method will
+not be associated with a particular field; it will have a special-case
+association with the field named ‘__all__’.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.LoginForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'password':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.LoginForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="user_control.forms.LoginForm.media">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#user_control.forms.LoginForm.media" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.PatientEditProfileForm">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.forms.</span></span><span class="sig-name descname"><span class="pre">PatientEditProfileForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data=None</span></em>, <em class="sig-param"><span class="pre">files=None</span></em>, <em class="sig-param"><span class="pre">auto_id='id_%s'</span></em>, <em class="sig-param"><span class="pre">prefix=None</span></em>, <em class="sig-param"><span class="pre">initial=None</span></em>, <em class="sig-param"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></em>, <em class="sig-param"><span class="pre">label_suffix=None</span></em>, <em class="sig-param"><span class="pre">empty_permitted=False</span></em>, <em class="sig-param"><span class="pre">instance=None</span></em>, <em class="sig-param"><span class="pre">use_required_attribute=None</span></em>, <em class="sig-param"><span class="pre">renderer=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/forms.html#PatientEditProfileForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.PatientEditProfileForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<p>This form is used to edit a patient’s profile.</p>
+<dl class="simple">
+<dt>This form displays</dt><dd><ul class="simple">
+<li><p>profile_pic: a file input for the patient’s profile picture</p></li>
+<li><p>date_of_birth: a date input for the patient’s date of birth</p></li>
+<li><p>height: a text input for the patient’s height</p></li>
+<li><p>weight: a text input for the patient’s weight</p></li>
+<li><p>blood_group: a drop down for patient’s blood group</p></li>
+<li><p>gender: a drop down for patient’s gender</p></li>
+<li><p>last_donation: a date input for the patient’s last donation</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.PatientEditProfileForm.Meta">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/user_control/forms.html#PatientEditProfileForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.PatientEditProfileForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.PatientEditProfileForm.Meta.exclude">
+<span class="sig-name descname"><span class="pre">exclude</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['user']</span></em><a class="headerlink" href="#user_control.forms.PatientEditProfileForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.PatientEditProfileForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'__all__'</span></em><a class="headerlink" href="#user_control.forms.PatientEditProfileForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.PatientEditProfileForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#user_control.forms.PatientEditProfileForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#user_control.models.PatientModel" title="user_control.models.PatientModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">user_control.models.PatientModel</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.PatientEditProfileForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'address':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'blood_group':</span> <span class="pre">&lt;django.forms.fields.TypedChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'date_of_birth':</span> <span class="pre">&lt;django.forms.fields.DateField</span> <span class="pre">object&gt;,</span> <span class="pre">'gender':</span> <span class="pre">&lt;django.forms.fields.TypedChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'height':</span> <span class="pre">&lt;django.forms.fields.DecimalField</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.fields.ImageField</span> <span class="pre">object&gt;,</span> <span class="pre">'last_donation':</span> <span class="pre">&lt;django.forms.fields.DateField</span> <span class="pre">object&gt;,</span> <span class="pre">'phone':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'weight':</span> <span class="pre">&lt;django.forms.fields.IntegerField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.PatientEditProfileForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.PatientEditProfileForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'date_of_birth':</span> <span class="pre">&lt;django.forms.fields.DateField</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.fields.ImageField</span> <span class="pre">object&gt;,</span> <span class="pre">'last_donation':</span> <span class="pre">&lt;django.forms.fields.DateField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.PatientEditProfileForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="user_control.forms.PatientEditProfileForm.media">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#user_control.forms.PatientEditProfileForm.media" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.PatientRegistrationForm">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.forms.</span></span><span class="sig-name descname"><span class="pre">PatientRegistrationForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/forms.html#PatientRegistrationForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.PatientRegistrationForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.forms.UserCreationForm</span></code></p>
+<p>This form is used to register a patient.</p>
+<p>This form displays an email, a name, a password, and a confirm password field.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.forms.PatientRegistrationForm.Meta">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/user_control/forms.html#PatientRegistrationForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.forms.PatientRegistrationForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.PatientRegistrationForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">('name',</span> <span class="pre">'email',</span> <span class="pre">'password1',</span> <span class="pre">'password2',</span> <span class="pre">'check')</span></em><a class="headerlink" href="#user_control.forms.PatientRegistrationForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.PatientRegistrationForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#user_control.forms.PatientRegistrationForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#user_control.models.UserModel" title="user_control.models.UserModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">user_control.models.UserModel</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.PatientRegistrationForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'check':</span> <span class="pre">&lt;django.forms.fields.BooleanField</span> <span class="pre">object&gt;,</span> <span class="pre">'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.PatientRegistrationForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.forms.PatientRegistrationForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'check':</span> <span class="pre">&lt;django.forms.fields.BooleanField</span> <span class="pre">object&gt;,</span> <span class="pre">'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#user_control.forms.PatientRegistrationForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="user_control.forms.PatientRegistrationForm.media">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#user_control.forms.PatientRegistrationForm.media" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-user_control.models">
+<span id="user-control-models-module"></span><h2>user_control.models module<a class="headerlink" href="#module-user_control.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.models.</span></span><span class="sig-name descname"><span class="pre">DoctorModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#DoctorModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.DoctorModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This is the model that will be used to create the doctor’s profile.
+This model includes the following fields:
+user: A one-to-one field that references the User model.
+bio: A text field that stores the doctor’s bio.
+image: A file field that stores the patient’s image.
+gender: The gender of the patient.
+blood_group: The blood group of the patient
+date_of_birth: The date of birth of the patient.
+phone: The phone number of the patient.
+nid: The national id card number of the doctor.
+specialization: The specialization of the doctor.
+bmdc_reg_no: The BMDC registration number of the doctor.
+last_donation: The date of the last blood donation of the doctor.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.BLOOD_GROUP_CHOICES">
+<span class="sig-name descname"><span class="pre">BLOOD_GROUP_CHOICES</span></span><em class="property"> <span class="pre">=</span> <span class="pre">[('A+',</span> <span class="pre">'A+'),</span> <span class="pre">('A-',</span> <span class="pre">'A-'),</span> <span class="pre">('B+',</span> <span class="pre">'B+'),</span> <span class="pre">('B-',</span> <span class="pre">'B-'),</span> <span class="pre">('AB+',</span> <span class="pre">'AB+'),</span> <span class="pre">('AB-',</span> <span class="pre">'AB-'),</span> <span class="pre">('O+',</span> <span class="pre">'O+'),</span> <span class="pre">('O-',</span> <span class="pre">'O-')]</span></em><a class="headerlink" href="#user_control.models.DoctorModel.BLOOD_GROUP_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.BMDC_regNo">
+<span class="sig-name descname"><span class="pre">BMDC_regNo</span></span><a class="headerlink" href="#user_control.models.DoctorModel.BMDC_regNo" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.DoesNotExist">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#user_control.models.DoctorModel.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.GENDER_CHOICES">
+<span class="sig-name descname"><span class="pre">GENDER_CHOICES</span></span><em class="property"> <span class="pre">=</span> <span class="pre">[('Male',</span> <span class="pre">'Male'),</span> <span class="pre">('Female',</span> <span class="pre">'Female'),</span> <span class="pre">('Other',</span> <span class="pre">'Other')]</span></em><a class="headerlink" href="#user_control.models.DoctorModel.GENDER_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#user_control.models.DoctorModel.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.NID">
+<span class="sig-name descname"><span class="pre">NID</span></span><a class="headerlink" href="#user_control.models.DoctorModel.NID" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.appointmentmodel_set">
+<span class="sig-name descname"><span class="pre">appointmentmodel_set</span></span><a class="headerlink" href="#user_control.models.DoctorModel.appointmentmodel_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.bio">
+<span class="sig-name descname"><span class="pre">bio</span></span><a class="headerlink" href="#user_control.models.DoctorModel.bio" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.blood_group">
+<span class="sig-name descname"><span class="pre">blood_group</span></span><a class="headerlink" href="#user_control.models.DoctorModel.blood_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.date_of_birth">
+<span class="sig-name descname"><span class="pre">date_of_birth</span></span><a class="headerlink" href="#user_control.models.DoctorModel.date_of_birth" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.gender">
+<span class="sig-name descname"><span class="pre">gender</span></span><a class="headerlink" href="#user_control.models.DoctorModel.gender" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.get_blood_group_display">
+<span class="sig-name descname"><span class="pre">get_blood_group_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">field=&lt;django.db.models.fields.CharField:</span> <span class="pre">blood_group&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_control.models.DoctorModel.get_blood_group_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.get_gender_display">
+<span class="sig-name descname"><span class="pre">get_gender_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">field=&lt;django.db.models.fields.CharField:</span> <span class="pre">gender&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_control.models.DoctorModel.get_gender_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#user_control.models.DoctorModel.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.image">
+<span class="sig-name descname"><span class="pre">image</span></span><a class="headerlink" href="#user_control.models.DoctorModel.image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like the FileDescriptor, but for ImageFields. The only difference is
+assigning the width/height to the width_field/height_field, if appropriate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.last_donation">
+<span class="sig-name descname"><span class="pre">last_donation</span></span><a class="headerlink" href="#user_control.models.DoctorModel.last_donation" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#user_control.models.DoctorModel.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.phone">
+<span class="sig-name descname"><span class="pre">phone</span></span><a class="headerlink" href="#user_control.models.DoctorModel.phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.specialization">
+<span class="sig-name descname"><span class="pre">specialization</span></span><a class="headerlink" href="#user_control.models.DoctorModel.specialization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.specialization_id">
+<span class="sig-name descname"><span class="pre">specialization_id</span></span><a class="headerlink" href="#user_control.models.DoctorModel.specialization_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#user_control.models.DoctorModel.user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a one-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Restaurant</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">OneToOneField</span><span class="p">(</span><span class="n">Place</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;restaurant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Restaurant.place</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardOneToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.DoctorModel.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><a class="headerlink" href="#user_control.models.DoctorModel.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.models.FeedbackModel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.models.</span></span><span class="sig-name descname"><span class="pre">FeedbackModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#FeedbackModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.FeedbackModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This is the model that will be used to store the feedback data.
+This model includes the following fields:
+name: The name of the user.
+email: The email of the user.
+subject: The subject of the feedback.
+message: The message of the feedback.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="user_control.models.FeedbackModel.DoesNotExist">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#user_control.models.FeedbackModel.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="user_control.models.FeedbackModel.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#user_control.models.FeedbackModel.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.FeedbackModel.email">
+<span class="sig-name descname"><span class="pre">email</span></span><a class="headerlink" href="#user_control.models.FeedbackModel.email" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.FeedbackModel.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#user_control.models.FeedbackModel.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.FeedbackModel.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#user_control.models.FeedbackModel.message" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.FeedbackModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#user_control.models.FeedbackModel.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.FeedbackModel.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#user_control.models.FeedbackModel.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.FeedbackModel.subject">
+<span class="sig-name descname"><span class="pre">subject</span></span><a class="headerlink" href="#user_control.models.FeedbackModel.subject" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.models.MyUserManager">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.models.</span></span><span class="sig-name descname"><span class="pre">MyUserManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#MyUserManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.MyUserManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.base_user.BaseUserManager</span></code></p>
+<p>This is a custom manager for the Custom User model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.MyUserManager.create_superuser">
+<span class="sig-name descname"><span class="pre">create_superuser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#MyUserManager.create_superuser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.MyUserManager.create_superuser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and saves a superuser with the given email and password.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.MyUserManager.create_user">
+<span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#MyUserManager.create_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.MyUserManager.create_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and saves a User with the given email and password.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.models.PatientModel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.models.</span></span><span class="sig-name descname"><span class="pre">PatientModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#PatientModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.PatientModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This is the model that will be used to create the patient’s profile.
+This model includes the following fields:
+user: A one-to-one field that references the User model.
+image: A file field that stores the patient’s image.
+gender: The gender of the patient.
+blood_group: The blood group of the patient
+height: The height of the patient in inches.
+weight: The weight of the patient in pounds.
+date_of_birth: The date of birth of the patient.
+phone: The phone number of the patient.
+address: The address of the patient.
+last_donation: The date of the last blood donation of the patient.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.BLOOD_GROUP_CHOICES">
+<span class="sig-name descname"><span class="pre">BLOOD_GROUP_CHOICES</span></span><em class="property"> <span class="pre">=</span> <span class="pre">[('A+',</span> <span class="pre">'A+'),</span> <span class="pre">('A-',</span> <span class="pre">'A-'),</span> <span class="pre">('B+',</span> <span class="pre">'B+'),</span> <span class="pre">('B-',</span> <span class="pre">'B-'),</span> <span class="pre">('AB+',</span> <span class="pre">'AB+'),</span> <span class="pre">('AB-',</span> <span class="pre">'AB-'),</span> <span class="pre">('O+',</span> <span class="pre">'O+'),</span> <span class="pre">('O-',</span> <span class="pre">'O-')]</span></em><a class="headerlink" href="#user_control.models.PatientModel.BLOOD_GROUP_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.DoesNotExist">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#user_control.models.PatientModel.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.GENDER_CHOICES">
+<span class="sig-name descname"><span class="pre">GENDER_CHOICES</span></span><em class="property"> <span class="pre">=</span> <span class="pre">[('Male',</span> <span class="pre">'Male'),</span> <span class="pre">('Female',</span> <span class="pre">'Female'),</span> <span class="pre">('Other',</span> <span class="pre">'Other')]</span></em><a class="headerlink" href="#user_control.models.PatientModel.GENDER_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#user_control.models.PatientModel.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.address">
+<span class="sig-name descname"><span class="pre">address</span></span><a class="headerlink" href="#user_control.models.PatientModel.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.appointmentmodel_set">
+<span class="sig-name descname"><span class="pre">appointmentmodel_set</span></span><a class="headerlink" href="#user_control.models.PatientModel.appointmentmodel_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.blood_group">
+<span class="sig-name descname"><span class="pre">blood_group</span></span><a class="headerlink" href="#user_control.models.PatientModel.blood_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.calc_age">
+<span class="sig-name descname"><span class="pre">calc_age</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#PatientModel.calc_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.PatientModel.calc_age" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.calc_bmi">
+<span class="sig-name descname"><span class="pre">calc_bmi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#PatientModel.calc_bmi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.PatientModel.calc_bmi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.date_of_birth">
+<span class="sig-name descname"><span class="pre">date_of_birth</span></span><a class="headerlink" href="#user_control.models.PatientModel.date_of_birth" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.gender">
+<span class="sig-name descname"><span class="pre">gender</span></span><a class="headerlink" href="#user_control.models.PatientModel.gender" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.get_blood_group_display">
+<span class="sig-name descname"><span class="pre">get_blood_group_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">field=&lt;django.db.models.fields.CharField:</span> <span class="pre">blood_group&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_control.models.PatientModel.get_blood_group_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.get_gender_display">
+<span class="sig-name descname"><span class="pre">get_gender_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">field=&lt;django.db.models.fields.CharField:</span> <span class="pre">gender&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_control.models.PatientModel.get_gender_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.healthrecordmodel_set">
+<span class="sig-name descname"><span class="pre">healthrecordmodel_set</span></span><a class="headerlink" href="#user_control.models.PatientModel.healthrecordmodel_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#user_control.models.PatientModel.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#user_control.models.PatientModel.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.image">
+<span class="sig-name descname"><span class="pre">image</span></span><a class="headerlink" href="#user_control.models.PatientModel.image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just like the FileDescriptor, but for ImageFields. The only difference is
+assigning the width/height to the width_field/height_field, if appropriate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.last_donation">
+<span class="sig-name descname"><span class="pre">last_donation</span></span><a class="headerlink" href="#user_control.models.PatientModel.last_donation" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#user_control.models.PatientModel.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.phone">
+<span class="sig-name descname"><span class="pre">phone</span></span><a class="headerlink" href="#user_control.models.PatientModel.phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#user_control.models.PatientModel.user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a one-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Restaurant</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">OneToOneField</span><span class="p">(</span><span class="n">Place</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;restaurant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Restaurant.place</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardOneToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><a class="headerlink" href="#user_control.models.PatientModel.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.PatientModel.weight">
+<span class="sig-name descname"><span class="pre">weight</span></span><a class="headerlink" href="#user_control.models.PatientModel.weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.models.SpecializationModel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.models.</span></span><span class="sig-name descname"><span class="pre">SpecializationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specialization</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#SpecializationModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.SpecializationModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="user_control.models.SpecializationModel.DoesNotExist">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#user_control.models.SpecializationModel.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="user_control.models.SpecializationModel.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#user_control.models.SpecializationModel.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.SpecializationModel.doctormodel_set">
+<span class="sig-name descname"><span class="pre">doctormodel_set</span></span><a class="headerlink" href="#user_control.models.SpecializationModel.doctormodel_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.SpecializationModel.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#user_control.models.SpecializationModel.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.SpecializationModel.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#user_control.models.SpecializationModel.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.SpecializationModel.specialization">
+<span class="sig-name descname"><span class="pre">specialization</span></span><a class="headerlink" href="#user_control.models.SpecializationModel.specialization" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="user_control.models.UserModel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">user_control.models.</span></span><span class="sig-name descname"><span class="pre">UserModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#UserModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.UserModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.base_user.AbstractBaseUser</span></code></p>
+<p>This is the Custom User model.
+This is the model that will be used to create the users in the system.
+This model includes the following fields:
+email: The email address of the user.
+name: The name of the user.
+is_active: A boolean field that specifies whether the user is active or not.
+is_staff: A boolean field that specifies whether the user is a staff member or not.
+is_admin: A boolean field that specifies whether the user is an admin or not.
+date_joined: A date field that specifies when the user joined the system.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="user_control.models.UserModel.DoesNotExist">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#user_control.models.UserModel.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="user_control.models.UserModel.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#user_control.models.UserModel.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.REQUIRED_FIELDS">
+<span class="sig-name descname"><span class="pre">REQUIRED_FIELDS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['name']</span></em><a class="headerlink" href="#user_control.models.UserModel.REQUIRED_FIELDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.USERNAME_FIELD">
+<span class="sig-name descname"><span class="pre">USERNAME_FIELD</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'email'</span></em><a class="headerlink" href="#user_control.models.UserModel.USERNAME_FIELD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.advicemodel_set">
+<span class="sig-name descname"><span class="pre">advicemodel_set</span></span><a class="headerlink" href="#user_control.models.UserModel.advicemodel_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.articlemodel_set">
+<span class="sig-name descname"><span class="pre">articlemodel_set</span></span><a class="headerlink" href="#user_control.models.UserModel.articlemodel_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.bloodrequestmodel_set">
+<span class="sig-name descname"><span class="pre">bloodrequestmodel_set</span></span><a class="headerlink" href="#user_control.models.UserModel.bloodrequestmodel_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.communitypostmodel_set">
+<span class="sig-name descname"><span class="pre">communitypostmodel_set</span></span><a class="headerlink" href="#user_control.models.UserModel.communitypostmodel_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.date_joined">
+<span class="sig-name descname"><span class="pre">date_joined</span></span><a class="headerlink" href="#user_control.models.UserModel.date_joined" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.doctormodel">
+<span class="sig-name descname"><span class="pre">doctormodel</span></span><a class="headerlink" href="#user_control.models.UserModel.doctormodel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the reverse side of a one-to-one
+relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Restaurant</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">OneToOneField</span><span class="p">(</span><span class="n">Place</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;restaurant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Place.restaurant</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseOneToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.email">
+<span class="sig-name descname"><span class="pre">email</span></span><a class="headerlink" href="#user_control.models.UserModel.email" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.UserModel.get_next_by_date_joined">
+<span class="sig-name descname"><span class="pre">get_next_by_date_joined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">date_joined&gt;</span></em>, <em class="sig-param"><span class="pre">is_next=True</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_control.models.UserModel.get_next_by_date_joined" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.UserModel.get_previous_by_date_joined">
+<span class="sig-name descname"><span class="pre">get_previous_by_date_joined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">date_joined&gt;</span></em>, <em class="sig-param"><span class="pre">is_next=False</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_control.models.UserModel.get_previous_by_date_joined" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.UserModel.has_module_perms">
+<span class="sig-name descname"><span class="pre">has_module_perms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#UserModel.has_module_perms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.UserModel.has_module_perms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="user_control.models.UserModel.has_perm">
+<span class="sig-name descname"><span class="pre">has_perm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">perm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/models.html#UserModel.has_perm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.models.UserModel.has_perm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#user_control.models.UserModel.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.is_admin">
+<span class="sig-name descname"><span class="pre">is_admin</span></span><a class="headerlink" href="#user_control.models.UserModel.is_admin" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.is_doctor">
+<span class="sig-name descname"><span class="pre">is_doctor</span></span><a class="headerlink" href="#user_control.models.UserModel.is_doctor" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.is_patient">
+<span class="sig-name descname"><span class="pre">is_patient</span></span><a class="headerlink" href="#user_control.models.UserModel.is_patient" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.is_staff">
+<span class="sig-name descname"><span class="pre">is_staff</span></span><a class="headerlink" href="#user_control.models.UserModel.is_staff" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.logentry_set">
+<span class="sig-name descname"><span class="pre">logentry_set</span></span><a class="headerlink" href="#user_control.models.UserModel.logentry_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#user_control.models.UserModel.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"> <span class="pre">=</span> <span class="pre">&lt;user_control.models.MyUserManager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#user_control.models.UserModel.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.patientmodel">
+<span class="sig-name descname"><span class="pre">patientmodel</span></span><a class="headerlink" href="#user_control.models.UserModel.patientmodel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the reverse side of a one-to-one
+relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Restaurant</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">OneToOneField</span><span class="p">(</span><span class="n">Place</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;restaurant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Place.restaurant</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseOneToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="user_control.models.UserModel.plasmarequestmodel_set">
+<span class="sig-name descname"><span class="pre">plasmarequestmodel_set</span></span><a class="headerlink" href="#user_control.models.UserModel.plasmarequestmodel_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-user_control.urls">
+<span id="user-control-urls-module"></span><h2>user_control.urls module<a class="headerlink" href="#module-user_control.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-user_control.utils">
+<span id="user-control-utils-module"></span><h2>user_control.utils module<a class="headerlink" href="#module-user_control.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="user_control.utils.calculate_age">
+<span class="sig-prename descclassname"><span class="pre">user_control.utils.</span></span><span class="sig-name descname"><span class="pre">calculate_age</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">born</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/utils.html#calculate_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.utils.calculate_age" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate age from date of birth
+:param born: date of birth
+:return: age</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-user_control.views">
+<span id="user-control-views-module"></span><h2>user_control.views module<a class="headerlink" href="#module-user_control.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="user_control.views.account_settings_view">
+<span class="sig-prename descclassname"><span class="pre">user_control.views.</span></span><span class="sig-name descname"><span class="pre">account_settings_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/views.html#account_settings_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.views.account_settings_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view will render the account settings page.
+:param request:</p>
+<p>This view will render a form to change the account settings.
+User can change his/her name, email, and password from this page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>renders the account settings page</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_control.views.contact_view">
+<span class="sig-prename descclassname"><span class="pre">user_control.views.</span></span><span class="sig-name descname"><span class="pre">contact_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/views.html#contact_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.views.contact_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view will render the contact page.
+:param request:</p>
+<p>This view will render a form to contact the admin panel.
+The feedback will be saved in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>renders the contact page</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_control.views.doctor_edit_profile">
+<span class="sig-prename descclassname"><span class="pre">user_control.views.</span></span><span class="sig-name descname"><span class="pre">doctor_edit_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/views.html#doctor_edit_profile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.views.doctor_edit_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view will render the doctor’s profile edit page.
+:param request:</p>
+<p>This view will render a form to edit the doctor’s profile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>renders the doctor’s profile edit page</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_control.views.doctor_profile_view">
+<span class="sig-prename descclassname"><span class="pre">user_control.views.</span></span><span class="sig-name descname"><span class="pre">doctor_profile_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/views.html#doctor_profile_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.views.doctor_profile_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view will render the doctor’s profile page.
+:param request:
+:param pk: the primary key of the doctor</p>
+<p>This view will render the doctor’s profile page, along with the informations like the name, email, phone number, posted articles, appointements, etc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>renders the doctor’s profile page</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_control.views.logout_view">
+<span class="sig-prename descclassname"><span class="pre">user_control.views.</span></span><span class="sig-name descname"><span class="pre">logout_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/views.html#logout_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.views.logout_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view will log a user out.
+:param request:</p>
+<p>This view logs out an user and redirects to the home page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirects to the home page</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_control.views.patient_edit_profile">
+<span class="sig-prename descclassname"><span class="pre">user_control.views.</span></span><span class="sig-name descname"><span class="pre">patient_edit_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/views.html#patient_edit_profile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.views.patient_edit_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view will render the patient’s profile edit page.
+:param request:</p>
+<p>This view will render a form to edit the patient’s profile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>renders the patient’s profile edit page</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_control.views.patient_profile_view">
+<span class="sig-prename descclassname"><span class="pre">user_control.views.</span></span><span class="sig-name descname"><span class="pre">patient_profile_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/user_control/views.html#patient_profile_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#user_control.views.patient_profile_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view will render the patient’s profile page.
+:param request:
+:param pk: the primary key of the patient</p>
+<p>This view will render the patient’s profile page, along with the informations like the name, email, phone number, community posts, completed appointements, blood requests, plasma requests, etc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>renders the patient’s profile page</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-user_control">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-user_control" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, KU, R, TR, AN.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

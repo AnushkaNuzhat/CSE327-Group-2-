@@ -1,0 +1,627 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>user_control.views &mdash; AMIC 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AMIC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AMIC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>user_control.views</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for user_control.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span><span class="p">,</span> <span class="n">login</span><span class="p">,</span> <span class="n">logout</span><span class="p">,</span> <span class="n">update_session_auth_hash</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.forms</span> <span class="kn">import</span> <span class="n">PasswordChangeForm</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+
+<span class="kn">from</span> <span class="nn">appointments.models</span> <span class="kn">import</span> <span class="n">AppointmentModel</span>
+<span class="kn">from</span> <span class="nn">articles.models</span> <span class="kn">import</span> <span class="n">ArticleModel</span>
+<span class="kn">from</span> <span class="nn">blood_donation.models</span> <span class="kn">import</span> <span class="n">BloodRequestModel</span>
+<span class="kn">from</span> <span class="nn">patient_community.models</span> <span class="kn">import</span> <span class="n">CommunityPostModel</span>
+<span class="kn">from</span> <span class="nn">plasma_donation.models</span> <span class="kn">import</span> <span class="n">PlasmaRequestModel</span>
+<span class="kn">from</span> <span class="nn">user_control.decorators</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">user_control.forms</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">user_control.utils</span> <span class="kn">import</span> <span class="n">calculate_age</span>
+
+
+<span class="nd">@unauthenticated_user</span>  <span class="c1"># this decorator will ensure that the user is logged in before they can access this view</span>
+<span class="k">def</span> <span class="nf">home_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># The home page</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the home page.</span>
+<span class="sd">    :param request:</span>
+<span class="sd">    :return: renders the home page</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;index.html&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@unauthenticated_user</span>  <span class="c1"># this decorator will ensure that the user is logged in before they can access this view</span>
+<span class="k">def</span> <span class="nf">login_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># Log a user in</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the login page.</span>
+<span class="sd">    :param request:</span>
+
+<span class="sd">    This view renders a login form and then takes in an email and a password.</span>
+<span class="sd">    if the email and password is authentic then logs in the user otherwise shows an error.</span>
+
+<span class="sd">    :return: renders the login page</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>  <span class="c1"># If the form has been submitted...</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">LoginForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>  <span class="c1"># A form bound to the POST data</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>  <span class="c1"># All validation rules pass</span>
+            <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span>  <span class="c1"># Get the email</span>
+            <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>  <span class="c1"># Get the password</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">authenticate</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>  <span class="c1"># Authenticate the user</span>
+
+            <span class="k">if</span> <span class="n">user</span> <span class="ow">and</span> <span class="n">user</span><span class="o">.</span><span class="n">is_doctor</span><span class="p">:</span>  <span class="c1"># If the user exists and is a doctor</span>
+                <span class="n">login</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>  <span class="c1"># Log them in</span>
+                <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;next&#39;</span><span class="p">):</span>  <span class="c1"># If there is a next page</span>
+                    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;next&#39;</span><span class="p">))</span>  <span class="c1"># Redirect to the next page</span>
+                <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;doctor-dashboard&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to the doctor dashboard</span>
+
+            <span class="k">elif</span> <span class="n">user</span> <span class="ow">and</span> <span class="n">user</span><span class="o">.</span><span class="n">is_patient</span><span class="p">:</span>  <span class="c1"># If the user exists and is a patient</span>
+                <span class="n">login</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>  <span class="c1"># Log them in</span>
+                <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;next&#39;</span><span class="p">):</span>  <span class="c1"># If there is a next page</span>
+                    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;next&#39;</span><span class="p">))</span>  <span class="c1"># Redirect to the next page</span>
+                <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;patient-dashboard&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to the patient dashboard</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># If the user doesn&#39;t exist</span>
+                <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Email or Password is incorrect.&#39;</span><span class="p">)</span>  <span class="c1"># Display an error message</span>
+                <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to the login page</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># The form is invalid</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;authentication/login.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>  <span class="c1"># Render the login page</span>
+
+    <span class="n">form</span> <span class="o">=</span> <span class="n">LoginForm</span><span class="p">()</span>  <span class="c1"># An unbound form</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the form</span>
+        <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span>  <span class="c1"># The form</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;authentication/login.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the login page</span>
+
+
+<div class="viewcode-block" id="logout_view"><a class="viewcode-back" href="../../source/user_control.html#user_control.views.logout_view">[docs]</a><span class="k">def</span> <span class="nf">logout_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># Log a user out</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will log a user out.</span>
+<span class="sd">    :param request:</span>
+
+<span class="sd">    This view logs out an user and redirects to the home page.</span>
+
+<span class="sd">    :return: redirects to the home page</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logout</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>  <span class="c1"># Log the user out</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to the home page</span></div>
+
+
+<span class="nd">@unauthenticated_user</span> <span class="c1"># this decorator will ensure that the user is logged in before they can access this view</span>
+<span class="k">def</span> <span class="nf">doctor_signup_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># The doctor signup page</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the doctor signup page.</span>
+<span class="sd">    :param request: The HTTP request</span>
+
+<span class="sd">    This view renders a doctor signup form and then takes in an email and a password.</span>
+<span class="sd">    if the email and password is authentic then logs in the user otherwise shows an error.</span>
+
+<span class="sd">    :return: renders the doctor signup page</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>  <span class="c1"># If the form has been submitted...</span>
+        <span class="n">doctor_form</span> <span class="o">=</span> <span class="n">DoctorRegistrationForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>  <span class="c1"># A form bound to the POST data</span>
+        <span class="k">if</span> <span class="n">doctor_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>  <span class="c1"># All validation rules pass</span>
+            <span class="n">doctor_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Save the form</span>
+            <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span>  <span class="c1"># Get the email</span>
+            <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;password1&#39;</span><span class="p">]</span>  <span class="c1"># Get the password</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">authenticate</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>  <span class="c1"># Authenticate the user</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">is_doctor</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Save the user</span>
+            <span class="n">DoctorModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># Create a doctor record for the user</span>
+            <span class="n">login</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>  <span class="c1"># Log the user in</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;doctor-dashboard&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to the doctor dashboard</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># The form is invalid</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the form</span>
+                <span class="s1">&#39;doctor_form&#39;</span><span class="p">:</span> <span class="n">doctor_form</span>  <span class="c1"># The form</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;authentication/doctor-signup.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the signup page</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># The form has not been submitted</span>
+        <span class="n">doctor_form</span> <span class="o">=</span> <span class="n">DoctorRegistrationForm</span><span class="p">()</span>  <span class="c1"># An unbound form</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the form</span>
+        <span class="s1">&#39;doctor_form&#39;</span><span class="p">:</span> <span class="n">doctor_form</span>  <span class="c1"># The form</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;authentication/doctor-signup.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the signup page</span>
+
+
+<span class="nd">@unauthenticated_user</span>
+<span class="k">def</span> <span class="nf">patient_signup_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># The patient signup page</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the patient signup page.</span>
+<span class="sd">    :param request:</span>
+
+<span class="sd">    This view renders a patient signup form and then takes in an email and a password.</span>
+<span class="sd">    if the email and password is authentic then logs in the user otherwise shows an error.</span>
+
+<span class="sd">    :return: renders the patient signup page</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>  <span class="c1"># If the form has been submitted...</span>
+        <span class="n">patient_form</span> <span class="o">=</span> <span class="n">PatientRegistrationForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>  <span class="c1"># A form bound to the POST data</span>
+        <span class="k">if</span> <span class="n">patient_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>  <span class="c1"># All validation rules pass</span>
+            <span class="n">patient_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Save the form</span>
+            <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span>  <span class="c1"># Get the email</span>
+            <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;password1&#39;</span><span class="p">]</span>  <span class="c1"># Get the password</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">authenticate</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>  <span class="c1"># Authenticate the user</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">is_patient</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Save the user</span>
+            <span class="n">PatientModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># Create a patient model for the user</span>
+            <span class="n">login</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>  <span class="c1"># Log the user in</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;patient-dashboard&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to the patient dashboard</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># The form is invalid</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the form</span>
+                <span class="s1">&#39;patient_form&#39;</span><span class="p">:</span> <span class="n">patient_form</span>  <span class="c1"># The form</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;authentication/patient-signup.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the signup page</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># The form has not been submitted</span>
+        <span class="n">patient_form</span> <span class="o">=</span> <span class="n">PatientRegistrationForm</span><span class="p">()</span>  <span class="c1"># An unbound form</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the form</span>
+        <span class="s1">&#39;patient_form&#39;</span><span class="p">:</span> <span class="n">patient_form</span>  <span class="c1"># The form</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;authentication/patient-signup.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the signup page</span>
+
+
+<span class="nd">@login_required</span><span class="p">(</span>
+    <span class="n">login_url</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>  <span class="c1"># This decorator will ensure that the user is logged in before they can access this view</span>
+<span class="nd">@show_to_doctor</span><span class="p">(</span><span class="n">allowed_roles</span><span class="o">=</span><span class="p">[</span>
+    <span class="s1">&#39;is_doctor&#39;</span><span class="p">])</span>  <span class="c1"># This decorator will ensure that the user is a doctor before they can access this view</span>
+<span class="k">def</span> <span class="nf">doctor_dashboard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># The doctor dashboard</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the doctor dashboard.</span>
+<span class="sd">    :param request:</span>
+<span class="sd">    :return: renders the doctor dashboard</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>  <span class="c1"># Get the user</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">DoctorModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># Get the doctor&#39;s profile</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the view</span>
+        <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">,</span>  <span class="c1"># The user</span>
+        <span class="s1">&#39;profile&#39;</span><span class="p">:</span> <span class="n">profile</span><span class="p">,</span>  <span class="c1"># The doctor&#39;s profile</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pages/user-control/doctor-dashboard.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the view</span>
+
+
+<span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
+<span class="nd">@show_to_patient</span><span class="p">(</span><span class="n">allowed_roles</span><span class="o">=</span><span class="p">[</span>
+    <span class="s1">&#39;is_patient&#39;</span><span class="p">])</span>  <span class="c1"># This decorator will ensure that the user is a patient before they can access this view</span>
+<span class="k">def</span> <span class="nf">patient_dashboard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># The patient dashboard</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the patient dashboard.</span>
+<span class="sd">    :param request:</span>
+<span class="sd">    :return: renders the patient dashboard    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>  <span class="c1"># Get the user</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">PatientModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># Get the patient&#39;s profile</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the view</span>
+        <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">,</span>  <span class="c1"># The user</span>
+        <span class="s1">&#39;profile&#39;</span><span class="p">:</span> <span class="n">profile</span><span class="p">,</span>  <span class="c1"># The patient&#39;s profile</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pages/user-control/patient-dashboard.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the view</span>
+
+
+<div class="viewcode-block" id="doctor_profile_view"><a class="viewcode-back" href="../../source/user_control.html#user_control.views.doctor_profile_view">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">doctor_profile_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>  <span class="c1"># The doctor&#39;s profile page</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the doctor&#39;s profile page.</span>
+<span class="sd">    :param request:</span>
+<span class="sd">    :param pk: the primary key of the doctor</span>
+
+<span class="sd">    This view will render the doctor&#39;s profile page, along with the informations like the name, email, phone number, posted articles, appointements, etc.</span>
+
+<span class="sd">    :return: renders the doctor&#39;s profile page</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">is_self</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># The user is not the doctor</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">UserModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>  <span class="c1"># Get the user</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="o">==</span> <span class="n">user</span><span class="p">:</span>  <span class="c1"># If the user is the doctor</span>
+        <span class="n">is_self</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Set the flag to True</span>
+
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">DoctorModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># Get the doctor&#39;s profile</span>
+
+    <span class="n">date_joined</span> <span class="o">=</span> <span class="n">calculate_age</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">date_joined</span><span class="p">)</span>  <span class="c1"># Get the age of the user account</span>
+
+    <span class="n">incomplete_profile</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">bio</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">gender</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">blood_group</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">date_of_birth</span> <span class="ow">or</span> <span class="ow">not</span> \
+            <span class="n">profile</span><span class="o">.</span><span class="n">phone</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">NID</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">specialization</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">BMDC_regNo</span><span class="p">:</span>
+        <span class="n">incomplete_profile</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">articles</span> <span class="o">=</span> <span class="n">ArticleModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">article_author</span><span class="o">=</span><span class="n">user</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">completed_appointments</span> <span class="o">=</span> <span class="n">AppointmentModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">doctor</span><span class="o">=</span><span class="n">profile</span><span class="p">,</span> <span class="n">is_complete</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">is_pending</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_patient</span><span class="p">:</span>
+        <span class="n">patient</span> <span class="o">=</span> <span class="n">PatientModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">appointments</span> <span class="o">=</span> <span class="n">AppointmentModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">patient</span><span class="o">=</span><span class="n">patient</span><span class="p">,</span> <span class="n">doctor</span><span class="o">=</span><span class="n">profile</span><span class="p">,</span> <span class="n">is_accepted</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                                       <span class="n">is_canceled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_complete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">appointments</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">is_pending</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the view</span>
+        <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">,</span>  <span class="c1"># The user</span>
+        <span class="s1">&#39;is_self&#39;</span><span class="p">:</span> <span class="n">is_self</span><span class="p">,</span>  <span class="c1"># The flag</span>
+        <span class="s1">&#39;profile&#39;</span><span class="p">:</span> <span class="n">profile</span><span class="p">,</span>  <span class="c1"># The doctor&#39;s profile</span>
+        <span class="s1">&#39;date_joined&#39;</span><span class="p">:</span> <span class="n">date_joined</span><span class="p">,</span>  <span class="c1"># The account age</span>
+        <span class="s1">&#39;completed_appointments&#39;</span><span class="p">:</span> <span class="n">completed_appointments</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+        <span class="s1">&#39;incomplete_profile&#39;</span><span class="p">:</span> <span class="n">incomplete_profile</span><span class="p">,</span>
+        <span class="s1">&#39;articles&#39;</span><span class="p">:</span> <span class="n">articles</span><span class="p">,</span>
+        <span class="s1">&#39;total_posts&#39;</span><span class="p">:</span> <span class="n">articles</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+        <span class="s1">&#39;is_pending&#39;</span><span class="p">:</span> <span class="n">is_pending</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;pages/user-control/doctor-profile.html&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the view</span></div>
+
+
+<div class="viewcode-block" id="patient_profile_view"><a class="viewcode-back" href="../../source/user_control.html#user_control.views.patient_profile_view">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">patient_profile_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>  <span class="c1"># The patient&#39;s profile page</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the patient&#39;s profile page.</span>
+<span class="sd">    :param request:</span>
+<span class="sd">    :param pk: the primary key of the patient</span>
+
+<span class="sd">    This view will render the patient&#39;s profile page, along with the informations like the name, email, phone number, community posts, completed appointements, blood requests, plasma requests, etc.</span>
+
+<span class="sd">    :return: renders the patient&#39;s profile page    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">is_self</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># The user is not the patient</span>
+
+    <span class="n">user</span> <span class="o">=</span> <span class="n">UserModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>  <span class="c1"># Get the user</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="o">==</span> <span class="n">user</span><span class="p">:</span>  <span class="c1"># If the user is the patient</span>
+        <span class="n">is_self</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Set the flag to True</span>
+
+    <span class="n">has_access</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">PatientModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># Get the patient&#39;s profile</span>
+
+    <span class="n">date_joined</span> <span class="o">=</span> <span class="n">calculate_age</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">date_joined</span><span class="p">)</span>  <span class="c1"># Get the age of the user account</span>
+
+    <span class="n">age</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># The age of the user</span>
+    <span class="k">if</span> <span class="n">profile</span><span class="o">.</span><span class="n">date_of_birth</span><span class="p">:</span>  <span class="c1"># If the patient has a date of birth</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="n">calculate_age</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">date_of_birth</span><span class="p">)</span>  <span class="c1"># Get the age of the patient</span>
+
+    <span class="n">community_posts</span> <span class="o">=</span> <span class="n">CommunityPostModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">author</span><span class="o">=</span><span class="n">user</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">completed_appointments</span> <span class="o">=</span> <span class="n">AppointmentModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">patient</span><span class="o">=</span><span class="n">profile</span><span class="p">,</span> <span class="n">is_complete</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">user</span> <span class="o">=</span> <span class="n">UserModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="n">blood_requests</span> <span class="o">=</span> <span class="n">BloodRequestModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-posted_on&#39;</span><span class="p">)</span>
+    <span class="n">plasma_requests</span> <span class="o">=</span> <span class="n">PlasmaRequestModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-posted_on&#39;</span><span class="p">)</span>
+
+    <span class="n">incomplete_profile</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">gender</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">blood_group</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">date_of_birth</span> <span class="ow">or</span> <span class="ow">not</span> \
+            <span class="n">profile</span><span class="o">.</span><span class="n">phone</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">height</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">weight</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">profile</span><span class="o">.</span><span class="n">address</span><span class="p">:</span>
+        <span class="n">incomplete_profile</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the view</span>
+        <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">user</span><span class="p">,</span>  <span class="c1"># The user</span>
+        <span class="s1">&#39;is_self&#39;</span><span class="p">:</span> <span class="n">is_self</span><span class="p">,</span>  <span class="c1"># The flag</span>
+        <span class="s1">&#39;has_access&#39;</span><span class="p">:</span> <span class="n">has_access</span><span class="p">,</span>
+        <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="n">age</span><span class="p">,</span>  <span class="c1"># The age</span>
+        <span class="s1">&#39;profile&#39;</span><span class="p">:</span> <span class="n">profile</span><span class="p">,</span>  <span class="c1"># The patient&#39;s profile</span>
+        <span class="s1">&#39;date_joined&#39;</span><span class="p">:</span> <span class="n">date_joined</span><span class="p">,</span>  <span class="c1"># The account age</span>
+        <span class="s1">&#39;incomplete_profile&#39;</span><span class="p">:</span> <span class="n">incomplete_profile</span><span class="p">,</span>
+        <span class="s1">&#39;community_posts&#39;</span><span class="p">:</span> <span class="n">community_posts</span><span class="p">,</span>
+        <span class="s1">&#39;completed_appointments&#39;</span><span class="p">:</span> <span class="n">completed_appointments</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+        <span class="s1">&#39;total_posts&#39;</span><span class="p">:</span> <span class="n">community_posts</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+        <span class="s1">&#39;blood_requests&#39;</span><span class="p">:</span> <span class="n">blood_requests</span><span class="p">[:</span><span class="mi">4</span><span class="p">],</span>
+        <span class="s1">&#39;total_blood_requests&#39;</span><span class="p">:</span> <span class="n">blood_requests</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+        <span class="s1">&#39;plasma_requests&#39;</span><span class="p">:</span> <span class="n">plasma_requests</span><span class="p">[:</span><span class="mi">4</span><span class="p">],</span>
+        <span class="s1">&#39;total_plasma_requests&#39;</span><span class="p">:</span> <span class="n">plasma_requests</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;pages/user-control/patient-profile.html&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the view</span></div>
+
+
+<div class="viewcode-block" id="doctor_edit_profile"><a class="viewcode-back" href="../../source/user_control.html#user_control.views.doctor_edit_profile">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">doctor_edit_profile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># The doctor&#39;s profile edit page</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the doctor&#39;s profile edit page.</span>
+<span class="sd">    :param request:</span>
+
+<span class="sd">    This view will render a form to edit the doctor&#39;s profile.</span>
+
+<span class="sd">    :return: renders the doctor&#39;s profile edit page</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">DoctorModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># Get the doctor&#39;s profile</span>
+
+    <span class="n">form</span> <span class="o">=</span> <span class="n">DoctorEditProfileForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span>  <span class="c1"># A form bound to the doctor&#39;s profile</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>  <span class="c1"># If the form has been submitted...</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">DoctorEditProfileForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span>  <span class="c1"># A form bound to the POST data</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>  <span class="c1"># All validation rules pass</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Save the form</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;doctor-profile&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>  <span class="c1"># Redirect to the doctor&#39;s profile</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># The form is invalid</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;edit-profile&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to the edit profile page</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the view</span>
+        <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span>  <span class="c1"># The form</span>
+        <span class="s1">&#39;profile&#39;</span><span class="p">:</span> <span class="n">profile</span><span class="p">,</span>  <span class="c1"># The doctor&#39;s profile</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pages/user-control/edit-profile.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the view</span></div>
+
+
+<div class="viewcode-block" id="patient_edit_profile"><a class="viewcode-back" href="../../source/user_control.html#user_control.views.patient_edit_profile">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">patient_edit_profile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># The patient&#39;s profile edit page</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the patient&#39;s profile edit page.</span>
+<span class="sd">    :param request:</span>
+
+<span class="sd">    This view will render a form to edit the patient&#39;s profile.</span>
+
+<span class="sd">    :return: renders the patient&#39;s profile edit page</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">PatientModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># Get the patient&#39;s profile</span>
+
+    <span class="n">form</span> <span class="o">=</span> <span class="n">PatientEditProfileForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span>  <span class="c1"># A form bound to the patient&#39;s profile</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>  <span class="c1"># If the form has been submitted...</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">PatientEditProfileForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span>  <span class="c1"># A form bound to the POST data</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>  <span class="c1"># All validation rules pass</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Save the form</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;patient-profile&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>  <span class="c1"># Redirect to the patient&#39;s profile</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># The form is invalid</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;edit-profile&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to the edit profile page</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the view</span>
+        <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span>  <span class="c1"># The form</span>
+        <span class="s1">&#39;profile&#39;</span><span class="p">:</span> <span class="n">profile</span><span class="p">,</span>  <span class="c1"># The patient&#39;s profile</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pages/user-control/edit-profile.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the view</span></div>
+
+
+<div class="viewcode-block" id="contact_view"><a class="viewcode-back" href="../../source/user_control.html#user_control.views.contact_view">[docs]</a><span class="k">def</span> <span class="nf">contact_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># The contact page</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the contact page.</span>
+<span class="sd">    :param request:</span>
+
+<span class="sd">    This view will render a form to contact the admin panel.</span>
+<span class="sd">    The feedback will be saved in the database.</span>
+
+<span class="sd">    :return: renders the contact page</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>  <span class="c1"># If the form has been submitted...</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>  <span class="c1"># Get the name</span>
+        <span class="n">email_add</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span>  <span class="c1"># Get the email</span>
+        <span class="n">subject</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span>  <span class="c1"># Get the subject</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>  <span class="c1"># Get the message</span>
+
+        <span class="n">FeedbackModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">email_add</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">)</span>  <span class="c1"># Create a feedback</span>
+
+        <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Feedback sent successfully.&quot;</span><span class="p">)</span>  <span class="c1"># Show a success message</span>
+
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pages/utils/contact.html&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to the contact page</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pages/utils/contact.html&#39;</span><span class="p">)</span>  <span class="c1"># Render the view</span></div>
+
+
+<div class="viewcode-block" id="account_settings_view"><a class="viewcode-back" href="../../source/user_control.html#user_control.views.account_settings_view">[docs]</a><span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">account_settings_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>  <span class="c1"># The account settings page</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This view will render the account settings page.</span>
+<span class="sd">    :param request:</span>
+
+<span class="sd">    This view will render a form to change the account settings.</span>
+<span class="sd">    User can change his/her name, email, and password from this page.</span>
+
+<span class="sd">    :return: renders the account settings page</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>  <span class="c1"># Get the user</span>
+
+    <span class="n">information_form</span> <span class="o">=</span> <span class="n">AccountInformationForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># A form bound to the user&#39;s account information</span>
+    <span class="n">password_form</span> <span class="o">=</span> <span class="n">PasswordChangeForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># A form bound to the user&#39;s password change</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>  <span class="c1"># If the form has been submitted...</span>
+        <span class="n">information_form</span> <span class="o">=</span> <span class="n">AccountInformationForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># A form bound to the POST data</span>
+        <span class="n">password_form</span> <span class="o">=</span> <span class="n">PasswordChangeForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>  <span class="c1"># A form bound to the POST data</span>
+
+        <span class="k">if</span> <span class="n">information_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>  <span class="c1"># All validation rules pass</span>
+            <span class="n">information_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Save the form</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Save the user</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;account-settings&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to the account settings page</span>
+
+        <span class="k">elif</span> <span class="n">password_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>  <span class="c1"># All validation rules pass</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">password_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Save the user</span>
+            <span class="n">update_session_auth_hash</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>  <span class="c1"># Update the session with the new password</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Your password was successfully updated!&#39;</span><span class="p">)</span>  <span class="c1"># Show a success message</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;account-settings&#39;</span><span class="p">)</span>  <span class="c1"># Redirect to the account settings page</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># The form is invalid</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the view</span>
+                <span class="s1">&#39;information_form&#39;</span><span class="p">:</span> <span class="n">information_form</span><span class="p">,</span>  <span class="c1"># The form</span>
+                <span class="s1">&#39;password_form&#39;</span><span class="p">:</span> <span class="n">password_form</span><span class="p">,</span>  <span class="c1"># The form</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pages/user-control/account-settings.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the view</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Context to render the view</span>
+        <span class="s1">&#39;information_form&#39;</span><span class="p">:</span> <span class="n">information_form</span><span class="p">,</span>  <span class="c1"># The form</span>
+        <span class="s1">&#39;password_form&#39;</span><span class="p">:</span> <span class="n">password_form</span><span class="p">,</span>  <span class="c1"># The form</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;pages/user-control/account-settings.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># Render the view</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, KU, R, TR, AN.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

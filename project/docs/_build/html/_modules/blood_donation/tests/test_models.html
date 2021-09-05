@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>blood_donation.tests.test_models &mdash; AMIC 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AMIC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AMIC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>blood_donation.tests.test_models</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for blood_donation.tests.test_models</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+
+<span class="kn">from</span> <span class="nn">blood_donation.models</span> <span class="kn">import</span> <span class="n">BloodRequestModel</span>
+<span class="kn">from</span> <span class="nn">user_control.models</span> <span class="kn">import</span> <span class="n">UserModel</span>
+
+
+<div class="viewcode-block" id="AdviceModelTest"><a class="viewcode-back" href="../../../source/blood_donation.tests.html#blood_donation.tests.test_models.AdviceModelTest">[docs]</a><span class="k">class</span> <span class="nc">AdviceModelTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="AdviceModelTest.setUp"><a class="viewcode-back" href="../../../source/blood_donation.tests.html#blood_donation.tests.test_models.AdviceModelTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">UserModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
+            <span class="n">email</span><span class="o">=</span><span class="s1">&#39;test@example.com&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;asdf123ASDF&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AdviceModelTest.test_content"><a class="viewcode-back" href="../../../source/blood_donation.tests.html#blood_donation.tests.test_models.AdviceModelTest.test_content">[docs]</a>    <span class="k">def</span> <span class="nf">test_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">post</span> <span class="o">=</span> <span class="n">BloodRequestModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">patient_name</span><span class="o">=</span><span class="s1">&#39;test_name&#39;</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="s1">&#39;test_gender&#39;</span><span class="p">,</span>
+                                                <span class="n">blood_group</span><span class="o">=</span><span class="s1">&#39;A+&#39;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s1">&#39;Dhaka&#39;</span><span class="p">,</span> <span class="n">is_emergency</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                <span class="n">is_active</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">needed_within</span><span class="o">=</span><span class="s1">&#39;2021-09-01&#39;</span><span class="p">,</span> <span class="n">phone</span><span class="o">=</span><span class="s1">&#39;017xxxxxxxx&#39;</span><span class="p">,</span>
+                                                <span class="n">note</span><span class="o">=</span><span class="s1">&#39;test_note&#39;</span><span class="p">)</span>
+        <span class="n">expected_object_user</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">post</span><span class="o">.</span><span class="n">user</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">expected_object_patient_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">post</span><span class="o">.</span><span class="n">patient_name</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">expected_object_gender</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">post</span><span class="o">.</span><span class="n">gender</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">expected_object_blood_group</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">post</span><span class="o">.</span><span class="n">blood_group</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">expected_object_quantity</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">post</span><span class="o">.</span><span class="n">quantity</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">expected_object_location</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">post</span><span class="o">.</span><span class="n">location</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">expected_object_is_emergency</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">post</span><span class="o">.</span><span class="n">is_emergency</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">expected_object_is_active</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">post</span><span class="o">.</span><span class="n">is_active</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">expected_object_needed_within</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">post</span><span class="o">.</span><span class="n">needed_within</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">expected_object_phone</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">post</span><span class="o">.</span><span class="n">phone</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">expected_object_note</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">post</span><span class="o">.</span><span class="n">note</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected_object_user</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected_object_patient_name</span><span class="p">,</span> <span class="s1">&#39;test_name&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected_object_gender</span><span class="p">,</span> <span class="s1">&#39;test_gender&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected_object_blood_group</span><span class="p">,</span> <span class="s1">&#39;A+&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected_object_quantity</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected_object_location</span><span class="p">,</span> <span class="s1">&#39;Dhaka&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected_object_is_emergency</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected_object_is_active</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected_object_needed_within</span><span class="p">,</span> <span class="s1">&#39;2021-09-01&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected_object_phone</span><span class="p">,</span> <span class="s1">&#39;017xxxxxxxx&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected_object_note</span><span class="p">,</span> <span class="s1">&#39;test_note&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AdviceModelTest.tearDown"><a class="viewcode-back" href="../../../source/blood_donation.tests.html#blood_donation.tests.test_models.AdviceModelTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, KU, R, TR, AN.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
