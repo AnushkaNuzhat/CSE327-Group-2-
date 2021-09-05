@@ -24,8 +24,15 @@ INSTALLED_APPS = [
     'appointments',
     'articles',
     'blood_donation',
+    'plasma_donation',
+    'patient_community',
+    'health_advisor',
+    'health_records',
 
-
+    # External libraries
+    'ckeditor',
+    'django_filters',
+    'widget_tweaks',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,6 +55,32 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'base.urls'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar_YourCustomToolbarConfig': [
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+            {'name': 'clipboard', 'items': ['Undo', 'Redo']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']},
+            '/',
+            {'name': 'styles', 'items': [
+                'Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            {'name': 'tools', 'items': ['Maximize']},
+            {'name': 'links', 'items': ['Link', 'Unlink']},
+            {'name': 'insert',
+             'items': ['HorizontalRule', 'Smiley', 'SpecialChar']},
+            {'name': 'document', 'items': ['Preview', ]},
+        ],
+        'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
+        'height': 350,
+        'width': 850,
+        'tabSpaces': 4,
+    }
+}
 
 TEMPLATES = [
     {
